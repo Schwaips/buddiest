@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_182625) do
   end
 
   create_table "offers", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.string "address"
     t.integer "area"
     t.integer "price_per_hour"
@@ -64,5 +64,5 @@ ActiveRecord::Schema.define(version: 2021_01_12_182625) do
 
   add_foreign_key "bookings", "offers"
   add_foreign_key "bookings", "users"
-  add_foreign_key "offers", "offers", column: "user_id"
+  add_foreign_key "offers", "users"
 end

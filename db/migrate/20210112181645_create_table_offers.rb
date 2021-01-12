@@ -1,7 +1,7 @@
-class CreateOffers < ActiveRecord::Migration[6.0]
+class CreateTableOffers < ActiveRecord::Migration[6.0]
   def change
     create_table :offers do |t|
-      t.references :user, foreign_key: { to_table: :offers }
+      t.references :user, null: false, foreign_key: true
       t.string :address
       t.integer :area
       t.integer :price_per_hour

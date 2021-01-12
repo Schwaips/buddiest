@@ -7,5 +7,6 @@ class AddElementToUsers < ActiveRecord::Migration[6.0]
     add_column :users, :date_of_birth, :date
     add_column :users, :nationality, :string
     add_column :users, :gender, :string
+    add_column :users, :avatar, :string
   end
 end
