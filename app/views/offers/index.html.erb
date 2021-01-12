@@ -1,16 +1,21 @@
+<div class="homebanner">
+</div>
 
-<table class="table">
-   <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Voir</th>
-    <th> Lien </th>
-  </tr>
+<div class= "container">
+
+  <ul class="mt-5">
     <% @offers.each do |offer| %>
-  <tr>
-    <td><%= offer.title %></td>
-    <td><%= offer.description  %></td>
-    <td> <%= link_to  "Voir l'offre du buddy", offer_path(offer) %> </td>
-  </tr>
-  <% end %>
-</table>
+      <div class="card-trip pt-5">
+        <img src=" <%= offer.photos %> " />
+        <div class="card-trip-infos">
+        <div>
+          <h2><%= offer.title %></h2>
+          <p><%= offer.description %></p>
+        </div>
+            <h2 class="card-trip-pricing"><%= offer.price_per_hour %>€</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        </div>
+      </div>
+    <% end %>
+  </ul>
+</div>
