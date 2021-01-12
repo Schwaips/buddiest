@@ -1,0 +1,37 @@
+
+<div class="homebanner">
+</div>
+
+<div class= "container">
+
+  <ul class="mt-5">
+    <% @offers.each do |offer| %>
+      <div class="card-trip pt-5">
+        <img src=" <%= offer.photos %> " />
+        <div class="card-trip-infos">
+        <div>
+          <h2><%= offer.title %></h2>
+          <p><%= offer.description %></p>
+        </div>
+            <h2 class="card-trip-pricing"><%= offer.price_per_hour %>€</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        </div>
+      </div>
+    <% end %>
+  </ul>
+
+</div>
+
+
+
+
+
+<!--
+
+<h1></h1>
+
+  <ul>
+    <% @offers.each do |offer| %>
+      <li><%= offer.title %></li>
+    <% end %>
+  </ul> -->
