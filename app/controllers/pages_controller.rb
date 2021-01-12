@@ -3,3 +3,4 @@ class PagesController < ApplicationController
     flash[:notice] = "Yo"
   end
 end
+

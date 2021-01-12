@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>See details of offers :) </h1>
+
+    <div>
+      <h2>Title : <%= @offer.title %></h2>
+      <span>Description : <%= @offer.description %></span>
+      <br/>
+      <span> Créé par : <%= @offer.user.first_name %> <%= @offer.user.last_name %>  </span>
+      <span> Price per hour : <%= @offer.price_per_hour %></span> <br/>
+
+      <%= link_to  "Back to the list", "/offers" %>
+      <br/>
+      <br/>
+
+
+      <button class="btn btn-primary">Book this now !</button>
+
+    </div>
+</div>
+
