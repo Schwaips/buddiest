@@ -32,7 +32,7 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
-# gem pour authentification
+# gem pour authentification et authorization
 gem 'devise'
 gem 'pundit'
 
