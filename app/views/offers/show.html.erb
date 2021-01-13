@@ -12,7 +12,15 @@
       <br/>
       <br/>
 
-
+      <% if @offer.user == current_user %>
+      <%= link_to "Effacer la mission",
+            destroy_path,
+            method: :delete,
+            data: { confirm: "Effacer #{@offer.title}?" } %>
+            <br/>
+            <% else %>
+              <%=  %>
+            <% end %>
       <button class="btn btn-primary">Book this now !</button>
 
     </div>

@@ -9,13 +9,16 @@
         <img src=" <%= offer.photos %> " />
         <div class="card-trip-infos">
         <div>
-          <h2><%= offer.title %></h2>
-          <p><%= offer.description %></p>
+          <h2> <%= offer.title %></h2>
+          <p> <%= offer.description %></p>
+          <p> <%= offer.user.first_name  %></p>
+          <p> <%= link_to  "See offer", offer_path(offer) %> </p>
         </div>
             <h2 class="card-trip-pricing"><%= offer.price_per_hour %>€</h2>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
         </div>
       </div>
+      <br/>
     <% end %>
   </ul>
 </div>
