@@ -1,17 +1,20 @@
-<h1>Create a new offer</h1>
+<div class="offset-3 col-8">
+  <br/>
+  <h3>Create a new offer</h3>
 
 
-<div class="form-group">
-  <%= simple_form_for(@offer) do |f| %>
-                <%= f.input :title, label: "offer's name" %>
-                <%= f.input :description %>
-                <%= f.input :area %>
-                <%= f.input :address %>
-                <%= f.input :photos %>
-                <%= f.input :price_per_hour %>
-                <%# <%= f.association :user %> %>
-                <%= f.submit "Create offer", class: "btn btn-dark" %>
-              <% end %>
+  <div class="form-group">
+    <%= simple_form_for(@offer) do |f| %>
+                  <%= f.input :title, label: "Titre offre" %>
+                  <%= f.input :description, label: "Description" %>
+                  <%= f.input :area, label: "Zone de chalandise" %>
+                  <%= f.input :address, label: "Adresse" %>
+                  <%= f.input :photos, label: "Lien URL pour photo" %>
+                  <%= f.input :price_per_hour, label: "Prix par heure" %>
+                  <%# <%= f.association :user %> %>
+                  <%= f.submit "Create offer", class: "btn btn-dark" %>
+                <% end %>
+  </div>
+  <%= link_to  "Back to the list", offers_path %>
 </div>
 
-<%= link_to  "Back to the list", offers_path %>

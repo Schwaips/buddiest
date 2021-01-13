@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   #delete offer
   delete 'offers/:id' => 'offers#destroy', as: :destroy
+
+  resources :bookings
 end
