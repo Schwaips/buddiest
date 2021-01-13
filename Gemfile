@@ -34,7 +34,7 @@ gem 'simple_form'
 
 # gem pour authentification
 gem 'devise'
-
+gem 'pundit'
 
 gem 'faker'
 

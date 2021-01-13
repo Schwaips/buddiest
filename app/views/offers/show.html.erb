@@ -12,7 +12,11 @@
       <br/>
       <br/>
 
-
+      <%= link_to "Effacer la mission",
+            destroy_path,
+            method: :delete,
+            data: { confirm: "Effacer #{@offer.title}?" } %>
+            <br/>
       <button class="btn btn-primary">Book this now !</button>
 
     </div>
