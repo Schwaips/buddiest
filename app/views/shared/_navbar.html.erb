@@ -12,7 +12,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
          <li class="nav-item">
-            <%= current_user.email %>
+            <%= link_to "#{current_user.first_name}", offers_path, class: "nav-link" %>
          </li>
          <li class="nav-item">
             <%= link_to  "Add offer", new_offer_path, class: "nav-link" %>
