@@ -1,0 +1,10 @@
+
+
+
+<h3>Editer l'offre</h3>
+  <%= simple_form_for(@offer) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :photos, label: "Photo Url" %>
+    <%= f.submit class: "btn- btn-primary", label: "Sauvegarder" %>
+  <% end %>
