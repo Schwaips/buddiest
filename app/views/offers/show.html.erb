@@ -21,7 +21,18 @@
             <% else %>
               <%=  %>
             <% end %>
-      <button class="btn btn-primary">Book this now !</button>
+      <a class="btn btn-primary" href="/bookings/new" role="button">Book this compliment!</a>
+
+      <div class="form-group">
+      <%= simple_form_for [@offer, @booking] do |f| %>
+                <%= f.input :date_begin, as: :date, label: "Date de début" %>
+                <%= f.input :date_end, as: :date, label: "Date de fin" %>
+                <%= f.submit "Demander une offre", class: "btn btn-dark" %>
+              <% end %>
+
+
+<h2> <%= @offer.title %> </h2>
+<p> <%= @offer.user.first_name %></p>
 
     </div>
 </div>
