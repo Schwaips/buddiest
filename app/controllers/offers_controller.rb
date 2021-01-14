@@ -30,13 +30,16 @@ class OffersController < ApplicationController
 
   def edit
     @offer = Offer.find(params[:id])
+    authorize @offer
   end
 
-  # def update
-  #   @offer = Offer.find(params[:id])
-  #   @offer.update(params_offers)
-  #   redirect_to offers_path(@offer)
-  # end
+  def update
+    @offer = Offer.find(params[:id])
+    authorize @offer
+    @offer.update(params_offer)
+    redirect_to dashboard_path
+    flash[notice] = { text: "L'offre #{@offer.title} est à jour, merci" }
+  end
 
   def destroy
     @offer = Offer.find(params[:id])

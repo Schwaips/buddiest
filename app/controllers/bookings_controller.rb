@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
 
   def show
-    @bookings = Booking.all
-    authorize @bookings
+    @booking = Booking.all
+    authorize @booking
   end
 
   def new

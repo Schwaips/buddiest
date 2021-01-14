@@ -5,6 +5,11 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
+
+
   def new?
     create?
     # || user.admin? utile pour les utilisateurs admin.

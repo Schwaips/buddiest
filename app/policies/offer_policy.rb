@@ -14,6 +14,14 @@ class OfferPolicy < ApplicationPolicy
     true
   end
 
+    def edit?
+      true
+    end
+
+    def update?
+      edit?
+    end
+
 
   def show?
     true
