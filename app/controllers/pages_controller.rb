@@ -6,11 +6,12 @@ class PagesController < ApplicationController
     # offre que l'utilisteur a créé
     @user = current_user
     @offers = @user.offers
+
     @bookings = []
-    # @offers.each do |offer|
-    #   @bookings << offer.bookings
-    # end
-    # @bookings.flatten
+    @offers.each do |offer|
+      @bookings << offer.bookings
+    end
+    @bookings.flatten
   end
 
 end

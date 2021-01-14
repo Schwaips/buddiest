@@ -5,7 +5,6 @@ class BookingsController < ApplicationController
     authorize @bookings
   end
 
-
   def new
     @booking = Booking.new
     @offer = Offer.find(params[:offer_id])
@@ -21,8 +20,6 @@ class BookingsController < ApplicationController
     authorize @booking
     if @booking.save
       redirect_to offer_path(@offer)
-      raise
-      raise
     else
       render :new
     end
