@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(params_booking)
     @booking.user = current_user
-    # @booking.status = "En attente de validation de #{@booking.offer.user.first_name}"
+    @booking.status = "En attente de validation de l'utilisateur"
     authorize @booking
     if @booking.save
       redirect_to bookings_path(@booking)

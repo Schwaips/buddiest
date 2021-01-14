@@ -6,4 +6,5 @@ class User < ApplicationRecord
   # validates :first_name, :last_name, presence: true
   # has_many :bookings
   has_many :offers
+  has_many :bookings
 end
