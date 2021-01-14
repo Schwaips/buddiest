@@ -13,6 +13,10 @@ class PagesController < ApplicationController
     end
     @bookings.flatten
   end
-
+  
+  def history
+    @user = current_user
+    @bookings = @user.bookings
+  end
 end
 
