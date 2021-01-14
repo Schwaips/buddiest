@@ -1,17 +1,28 @@
 class BookingsController < ApplicationController
 
+  def show
+    @bookings = Booking.all
+    authorize @bookings
+  end
+
+
   def new
     @booking = Booking.new
+    @offer = Offer.find(params[:offer_id])
     authorize @booking
   end
 
   def create
     @booking = Booking.new(params_booking)
+    @offer = Offer.find(params[:offer_id])
+    @booking.offer = @offer
     @booking.user = current_user
     @booking.status = "En attente de validation de l'utilisateur"
     authorize @booking
     if @booking.save
-      redirect_to bookings_path(@booking)
+      redirect_to offer_path(@offer)
+      raise
+      raise
     else
       render :new
     end

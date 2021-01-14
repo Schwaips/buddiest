@@ -1,0 +1,11 @@
+<h1>Dashboard</h1>
+
+<% if user_signed_in? %>
+<%= @user.first_name  %>
+
+<% @offers.each do |offer| %>
+  <%= offer.title %>
+<% end %>
+<% else %>
+   <span>You need to login to access the dashboard</span>
+   <% end %>
