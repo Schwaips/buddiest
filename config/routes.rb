@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   #delete offer
   delete 'offers/:id' => 'offers#destroy', as: :destroy
+
+  get '/history', to: "pages#history"
 end
