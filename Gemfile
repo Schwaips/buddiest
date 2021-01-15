@@ -38,9 +38,8 @@ gem 'pundit'
 
 gem 'faker'
 
-# protection for secret data
-gem 'dotenv-rails', groups: [:development, :test]
-
+#cloudinary for picture database
+gem 'cloudinary', '~> 1.16.0'
 
 group :development, :test do
   gem 'pry-byebug'

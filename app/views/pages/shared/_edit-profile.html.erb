@@ -1,4 +1,4 @@
-<%# <h2>Edit <%= user.to_s.humanize %> <h2></h2>
+<%# <h2>Edit <%= user.to_s.humanize %>
 
 <%= simple_form_for(user, as: user, url: registration_path(user), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -19,6 +19,13 @@
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
     <%= f.input :first_name, label: "Prénom"  %>
+    <%= f.input :last_name, label: "Nom"  %>
+    <%= f.input :address, label: "Nom"  %>
+    <%= f.input :phone_number, label: "Téléphone"  %>
+    <%= f.date :date_of_birth, label: "Date de naissance"  %>
+    <%= f.input :nationality, label: "Nationalité"  %>
+    <%= f.input :gender, label: "Genre"  %>
+    <%= f.input :avatar  %>
                 <%# rajouter des inputs %>
   </div>
 
