@@ -1,8 +1,11 @@
 <div class="homebanner">
+  <h1>Buddiest</h1>
 </div>
 
 <div class= "container">
+  <h2>Découvrez nos cours...</h2>
 
+  <p>Réservez vos cours près de chez vous.</p>
   <ul class="mt-5">
     <% @offers.each do |offer| %>
       <div class="card-trip pt-5">
@@ -12,7 +15,7 @@
           <h2> <%= offer.title %></h2>
           <p> <%= offer.description %></p>
           <p> <%= offer.user.first_name  %></p>
-          <p> <%= link_to  "See offer", offer_path(offer) %> </p>
+          <p> <%= link_to  "Découvrir l'offre", offer_path(offer), class: "btn btn-green" %></p>
         </div>
             <h2 class="card-trip-pricing"><%= offer.price_per_hour %>€</h2>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />

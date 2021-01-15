@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: "pages#dashboard"
   #delete offer
   delete 'offers/:id' => 'offers#destroy', as: :destroy
-
+  
+ # history routes for pages historique. 
+  get '/history', to: "pages#history"
 
 end
