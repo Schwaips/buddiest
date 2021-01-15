@@ -20,12 +20,12 @@
                 input_html: { autocomplete: "current-password" } %>
     <%= f.input :first_name, label: "Prénom"  %>
     <%= f.input :last_name, label: "Nom"  %>
-    <%= f.input :address, label: "Nom"  %>
+    <%= f.input :address, label: "Adresse"  %>
     <%= f.input :phone_number, label: "Téléphone"  %>
-    <%= f.date :date_of_birth, label: "Date de naissance"  %>
+    <%= f.input :date_of_birth, label: "Date de naissance"  %>
     <%= f.input :nationality, label: "Nationalité"  %>
     <%= f.input :gender, label: "Genre"  %>
-    <%= f.input :avatar  %>
+    <%= f.input :photo, as: :file %>
                 <%# rajouter des inputs %>
   </div>
 
