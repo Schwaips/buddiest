@@ -3,6 +3,7 @@
   justify-content: space-between;
   background-color: transparent;
   transition: 0.5s background-color ease;
+  align-items: center;
 }
 
 .navbar-lewagon-white {
@@ -13,6 +14,7 @@
 .navbar-lewagon .navbar-collapse {
   justify-content: space-between;
   flex-grow: 0;
+  height: 66px;
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -23,4 +25,12 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
