@@ -30,9 +30,13 @@
 
 
       <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h5>Changer la photo</h5>
-        <input type="file" class="text-center center-block file-upload">
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, class:'img-thumbnail' %>
+        <% else %>
+          <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="avatar"  style="width: 150px; height: 200px;">
+        <% end %>
+        <h5>Avatar</h5>
+        <%# <input type="file" class="text-center center-block file-upload"> %>
       </div></hr><br>
 
 
@@ -66,64 +70,14 @@
                 <li class="tab-underlined"><a data-toggle="tab" href="#settings">Réservation de mes offres</a></li>
               </ul>
 
-
+            <%# profile %>
           <div class="tab-content">
-            <div class="tab-pane active" id="home">
+            <div class="tab-pane active" id="profile">
             <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
                 <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
 
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>Prénom</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="<%= @user.first_name %>" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
+                <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
 
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Nom</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="<%= @user.last_name %>" title="enter your last name if any.">
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Téléphone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="<%= @user.phone_number %>" title="enter your phone number if any.">
-                          </div>
-                      </div>
-
-
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Adresse</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="<%= @user.address %>" title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Mot de passe</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Vérifier le mot de passe</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="******" title="enter your password2.">
-                          </div>
-                      </div>
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
@@ -131,20 +85,24 @@
                                	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Annuler</button>
                             </div>
                       </div>
-              	</form>
 
               <hr>
 
              </div><!--/tab-Mes offres-->
-             <div class="tab-pane" id="messages">
+             <div class="tab-pane" id="offers">
 
                <h4>Vous pouvez éditer vos offres ici, passez une bonne journée</h4>
 
                <hr>
 
                 <% @offers.each do |offer|%>
-                  <div class="card-product">
-                    <img src="<%= offer.photos %>" />
+                  <div class="card-product mb-4">
+                    <% if offer.photo.attached?%>
+                      <%= cl_image_tag offer.photo.key %>
+                    <%else %>
+                      <img src="https://source.unsplash.com/random" />
+                    <% end %>
+
                     <div class="card-product-infos">
                       <h2><%= offer.title %></h2>
                       <p><%= offer.description %></p>
@@ -153,16 +111,24 @@
                       <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
                     </div>
                   </div>
-                  <br/>
                 <% end %>
+              </div><!--/Réservation de mes offres-->
 
-
-             </div><!--/Réservation de mes offres-->
-             <div class="tab-pane" id="settings">
+              <div class="tab-pane" id="offers-booked">
                 <%# <% if @bookings.count == 0 %>
                   <h4>Tiens, personne ne veut de vos sourires pour l'instant</h4>
                   <hr>
+               </div><!--/Réservation de mes offres-->
+
+
+              <div class="tab-pane" id="history"><!--/historique de mes résa-->
+                <%# <% if @bookings.count == 0 %>
+                  <h4>Vos derniers cours réservés</h4>
+                  <hr>
+                  <%= render partial:'pages/shared/history', :locals => { user: @user } %>
+
               </div><!--/tab-pane-->
+
           </div><!--/tab-content-->
 
         </div><!--/col-9-->

@@ -1,0 +1,41 @@
+<%# <h2>Edit <%= user.to_s.humanize %>
+
+<%= simple_form_for(user, as: user, url: profile_path) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true %>
+
+
+    <%= f.input :password,
+                hint: "Laissez ce champ vide si vous ne souhaitez pas changer votre mot de passe",
+                required: false,
+                input_html: { autocomplete: "Nouveau mot de passe" } %>
+    <%= f.input :password_confirmation,
+                required: false,
+                input_html: { autocomplete: "Nouveau mot de passe" } %>
+    <%= f.input :current_password,
+                hint: "Confirmer votre password actuel",
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
+    <%= f.input :first_name, label: "Prénom"  %>
+    <%= f.input :last_name, label: "Nom"  %>
+    <%= f.input :address, label: "Adresse"  %>
+    <%= f.input :phone_number, label: "Téléphone"  %>
+    <%# <%= f.input :date_of_birth, label: "Date de naissance"  %>
+    <%# <%= f.input :nationality, label: "Nationalité"  %>
+    <%# <%= f.input :gender, label: "Genre"  %>
+    <%= f.input :photo, as: :file %>
+                <%# rajouter des inputs %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
