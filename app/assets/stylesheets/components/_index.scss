@@ -10,3 +10,21 @@
 @import "map";
 @import "tab";
 @import "signin";
+
+
+.show_avatar{
+  width: 70px;
+  border-radius: 50%;
+}
+
+
+.booking-card{
+  background: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  margin-top: 30px;
+}
+.offer-details{
+  margin-top: 30px;
+}

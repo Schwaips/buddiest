@@ -1,39 +1,53 @@
+
+
+<br>
+
+<br>
+
+
+<% if @offer.photo.attached? %>
+  <div style=" background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @offer.photos.key %>')"></div>
+<% else %>
+  <div> </div>
+<% end %>
 <div class="container">
-  <h1>See details of offers :) </h1>
-
-    <div>
-      <h2>Title : <%= @offer.title %></h2>
-      <span>Description : <%= @offer.description %></span>
-      <br/>
-      <span> Créé par : <%= @offer.user.first_name %> <%= @offer.user.last_name %>  </span>
-      <span> Price per hour : <%= @offer.price_per_hour %></span> <br/>
-
+  <div class="d-flex justify-content-between">
+    <div class="offer-details">
+      <div class="d-flex align-items-center mb-5">
+      <% if @offer.user.photo.attached? %>
+        <%= cl_image_tag @offer.user.photo.key, class: "show_avatar" %>
+      <% else %>
+        <img src="https://source.unsplash.com/random" alt="" class="show_avatar">
+      <% end %>
+      <h2 class="pl-5"> <%= @offer.user.first_name %> <%= @offer.user.last_name %>  </h2>
+      </div>
+      <h2><%= @offer.title %></h2>
+      <p><%= @offer.description %></p>
+      <p> Mon prix : <%= @offer.price_per_hour %>€ par heure</p>
       <%= link_to  "Back to the list", "/offers" %>
-      <br/>
-      <br/>
-
+  </div>
+    <div>
       <% if @offer.user == current_user %>
-      <%= link_to "Effacer la mission",
-            destroy_path,
-            method: :delete,
-            data: { confirm: "Effacer #{@offer.title}?" } %>
-            <br/>
-            <% else %>
-              <%=  %>
-            <% end %>
-      <a class="btn btn-primary" href="/bookings/new" role="button">Book this compliment!</a>
-
-      <div class="form-group">
-      <%= simple_form_for [@offer, @booking] do |f| %>
-                <%= f.input :date_begin, as: :date, label: "Date de début" %>
-                <%= f.input :date_end, as: :date, label: "Date de fin" %>
-                <%= f.submit "Demander une offre", class: "btn btn-dark" %>
-              <% end %>
-
-
-<h2> <%= @offer.title %> </h2>
-<p> <%= @offer.user.first_name %></p>
-
+        <%= link_to "Effacer la mission",
+          destroy_path,
+          method: :delete,
+          data: { confirm: "Effacer #{@offer.title}?" } %>
+          <% else %>
+          <%=  %>
+      <% end %>
     </div>
+  <div class="form-group booking-card">
+    <%= simple_form_for [@offer, @booking] do |f| %>
+      <%= f.input :date_begin, as: :date, label: "Date de début" %>
+      <%= f.input :date_end, as: :date, label: "Date de fin" %>
+      <%= f.submit "Réserver ce cours", class: "btn btn-dark" %>
+    <% end %>
+  </div>
+ </div>
 </div>
 
+
+
+<br>
+
+<br>
