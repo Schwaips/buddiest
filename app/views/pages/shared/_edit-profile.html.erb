@@ -1,34 +1,35 @@
 <%# <h2>Edit <%= user.to_s.humanize %> <h2></h2>
 
-<%= simple_form_for(user, as: user, url: profile_path(user)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(user, as: user, url: profile_path(user)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
 
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :first_name, label: "Prénom"  %>
-                <%# rajouter des inputs %>
-  </div>
+      <%= f.input :password,
+                  hint: "leave it blank if you don't want to change it",
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :current_password,
+                  hint: "we need your current password to confirm your changes",
+                  required: true,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :first_name, label: "Prénom"  %>
+      <%= f.input :last_name, label: "Nom"%>
+                  <%# rajouter des inputs %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<br>
 
-<h3>Cancel my account</h3>
+<%= link_to "Retour à l'accueil", :back, class: "btn btn-green" %>
+<h3>Supprimer définitivement mon compte...</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(user), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<p>Supprimez votre compte en cliquant sur le lien : Attention, cette action est irrévocable. <%= link_to "Suppression de mon compte", registration_path(user), data: { confirm: "Are you sure?" }, method: :delete %></p>
