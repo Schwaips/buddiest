@@ -3,16 +3,19 @@
   <p>The best way to learn anywhere</p>
 </div>
 
-<div class="container-fluid mt-2 mb-5">
-  
-<h1>Tous les cours ci-dessous: </h1>
 
-<p>Découvrer les cours disponibles près de chez vous...</p>
-  <div class="container">
-  <div class="row g-3">
+<div class="mt-2 mb-5">
+  <h1>Tous les cours ci-dessous: </h1>
+  <p>Découvrer les cours disponibles près de chez vous...</p>
+</div>
+
+<div class="mapraph">
+
+<div class="row">
       <% @offers.each do |offer| %>
           <div class="col-md-4">
-            <div class="card"> <img src=" <%= offer.photos %> " class="card-img-top">
+            <div class="card mb-5"> <img src=" <%= offer.photos %> " class="card-img-top">
+
                 <div class="card-body">
                     <div class="d-flex justify-content-between"> <span class="font-weight-bold"><%= offer.title.capitalize! %></span> <span class="font-weight-bold"><%= offer.price_per_hour %> €</span> </div>
                     <p class="card-text mb-1 mt-1"><%= offer.description %></p>
@@ -25,11 +28,13 @@
                     <p> <%= link_to  "Découvrir l'offre", offer_path(offer), class: "btn btn-green" %></p>
                   </div>
                 </div>
-
             </div>
         </div>
       <% end  %>
     </div>
+  <div id="map"
+       style="width: 100%;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
