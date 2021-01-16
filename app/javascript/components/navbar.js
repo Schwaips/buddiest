@@ -1,4 +1,7 @@
 const initUpdateNavbarOnScroll = () => {
+  const homebanner = document.querySelector('.homebanner');
+  if (!homebanner) return;
+
   const navbar = document.querySelector('.navbar-lewagon');
   if (navbar) {
     window.addEventListener('scroll', () => {

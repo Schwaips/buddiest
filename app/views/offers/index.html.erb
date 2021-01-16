@@ -1,27 +1,35 @@
 <div class="homebanner">
   <h1>Buddiest</h1>
+  <p>The best way to learn anywhere</p>
 </div>
 
-<div class= "container">
-  <h2>Découvrez nos cours...</h2>
+<div class="container-fluid mt-2 mb-5">
+  
+<h1>Tous les cours ci-dessous: </h1>
 
-  <p>Réservez vos cours près de chez vous.</p>
-  <ul class="mt-5">
-    <% @offers.each do |offer| %>
-      <div class="card-trip pt-5">
-        <img src=" <%= offer.photos %> " />
-        <div class="card-trip-infos">
-        <div>
-          <h2> <%= offer.title %></h2>
-          <p> <%= offer.description %></p>
-          <p> <%= offer.user.first_name  %></p>
-          <p> <%= link_to  "Découvrir l'offre", offer_path(offer), class: "btn btn-green" %></p>
+<p>Découvrer les cours disponibles près de chez vous...</p>
+  <div class="container">
+  <div class="row g-3">
+      <% @offers.each do |offer| %>
+          <div class="col-md-4">
+            <div class="card"> <img src=" <%= offer.photos %> " class="card-img-top">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between"> <span class="font-weight-bold"><%= offer.title.capitalize! %></span> <span class="font-weight-bold"><%= offer.price_per_hour %> €</span> </div>
+                    <p class="card-text mb-1 mt-1"><%= offer.description %></p>
+                    <div class="d-flex align-items-center flex-row"> <img src="" width="20"></div>
+                </div>
+                <hr>
+                 <small><%= offer.user.first_name %> vous propose ce cours à partir de <%= offer.price_per_hour %> € par heure...</small>
+                <div class="card-body">
+                  <div class="text-center buttons">
+                    <p> <%= link_to  "Découvrir l'offre", offer_path(offer), class: "btn btn-green" %></p>
+                  </div>
+                </div>
+
+            </div>
         </div>
-            <h2 class="card-trip-pricing"><%= offer.price_per_hour %>€</h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-        </div>
-      </div>
-      <br/>
-    <% end %>
-  </ul>
+      <% end  %>
+    </div>
+  </div>
 </div>
+
