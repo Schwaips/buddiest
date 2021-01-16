@@ -1,3 +1,8 @@
+
+
+
+
+
 <div class="homebanner">
   <h1>Buddiest</h1>
   <p>The best way to learn anywhere</p>
@@ -14,8 +19,12 @@
 <div class="row">
       <% @offers.each do |offer| %>
           <div class="col-md-4">
-            <div class="card mb-5"> <img src=" <%= offer.photos %> " class="card-img-top">
-
+            <div class="card mb-5">
+            <% if offer.photo.attached? %>
+              <%= cl_image_tag offer.photo.key %>
+            <% else %>
+              <img src="https://source.unsplash.com/random" class="card-img-top">
+            <% end %>
                 <div class="card-body">
                     <div class="d-flex justify-content-between"> <span class="font-weight-bold"><%= offer.title.capitalize! %></span> <span class="font-weight-bold"><%= offer.price_per_hour %> €</span> </div>
                     <p class="card-text mb-1 mt-1"><%= offer.description %></p>
