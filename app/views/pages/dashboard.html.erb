@@ -30,13 +30,9 @@
 
 
       <div class="text-center">
-        <% if @user.photo.attached? %>
-          <%= cl_image_tag @user.photo.key, class:'img-thumbnail' %>
-        <% else %>
-          <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="avatar"  style="width: 150px; height: 200px;">
-        <% end %>
-        <h5>Avatar</h5>
-        <%# <input type="file" class="text-center center-block file-upload"> %>
+        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h5>Changer la photo</h5>
+        <input type="file" class="text-center center-block file-upload">
       </div></hr><br>
 
 
@@ -64,10 +60,11 @@
 
         </div><!--/col-3-->
     	<div class="col-sm-9">
-            <ul class="list-inline tabs-underlined">
-                <li class="tab-underlined active"><a data-toggle="tab" href="#home">Editer le profil</a></li>
-                <li class="tab-underlined"><a data-toggle="tab" href="#messages">Mes offres</a></li>
-                <li class="tab-underlined"><a data-toggle="tab" href="#settings">Réservation de mes offres</a></li>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#profile">Editer le profil</a></li>
+                <li><a data-toggle="tab" href="#offers">Mes offres</a></li>
+                <li><a data-toggle="tab" href="#offers-booked">Réservation de mes offres</a></li>
+                <li><a data-toggle="tab" href="#history">Historique de mes réservations</a></li>
               </ul>
 
             <%# profile %>
@@ -97,12 +94,7 @@
 
                 <% @offers.each do |offer|%>
                   <div class="card-product mb-4">
-                    <% if offer.photo.attached?%>
-                      <%= cl_image_tag offer.photo.key %>
-                    <%else %>
-                      <img src="https://source.unsplash.com/random" />
-                    <% end %>
-
+                    <img src="<%= offer.photos %>" />
                     <div class="card-product-infos">
                       <h2><%= offer.title %></h2>
                       <p><%= offer.description %></p>
