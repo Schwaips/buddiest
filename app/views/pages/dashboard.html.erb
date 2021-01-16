@@ -31,12 +31,12 @@
 
       <div class="text-center">
         <% if @user.photo.attached? %>
-          <%= cl_image_tag @user.photo.key, class: "avatar img-circle img-thumbnail" %>
+          <%= cl_image_tag @user.photo.key, class:'img-thumbnail' %>
         <% else %>
-          <img src="https://source.unsplash.com/random" class="avatar img-circle img-thumbnail" alt="avatar">
+          <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="avatar"  style="width: 150px; height: 200px;">
         <% end %>
-        <h5>Changer la photo</h5>
-        <input type="file" class="text-center center-block file-upload">
+        <h5>Avatar</h5>
+        <%# <input type="file" class="text-center center-block file-upload"> %>
       </div></hr><br>
 
 
@@ -78,8 +78,6 @@
 
                 <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
 
-
-
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
@@ -100,7 +98,11 @@
 
                 <% @offers.each do |offer|%>
                   <div class="card-product">
-                    <img src="<%= offer.photos %>" />
+                    <% if offer.photo.attached?%>
+                      <%= cl_image_tag offer.photo.key %>
+                    <%else %>
+                      <img src="https://source.unsplash.com/random" />
+                    <% end %>
                     <div class="card-product-infos">
                       <h2><%= offer.title %></h2>
                       <p><%= offer.description %></p>
