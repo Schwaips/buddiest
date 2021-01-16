@@ -9,10 +9,10 @@
                   <%= f.input :description, label: "Description" %>
                   <%= f.input :area, label: "Zone de chalandise" %>
                   <%= f.input :address, label: "Adresse" %>
-                  <%= f.input :photos, label: "Lien URL pour photo" %>
                   <%= f.input :price_per_hour, label: "Prix par heure" %>
-                  <%# <%= f.association :user %> %>
+                  <%= f.input :photo, as: :file %>
                   <%= f.submit "Create offer", class: "btn btn-dark" %>
+
                 <% end %>
   </div>
   <%= link_to  "Back to the list", offers_path %>

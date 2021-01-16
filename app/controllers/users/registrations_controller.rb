@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     if @user.update(params_user)
      flash[:alert] = "Votre compte est à jour"
-    #  redirect_to dashboard_path
+     return redirect_to dashboard_path
     else
       flash[:alert] = "Echec dans la mise à jour de votre compte"
     end

@@ -37,7 +37,13 @@ gem 'devise'
 gem 'pundit'
 
 gem 'faker'
+
+# pour geolocalisation
 gem 'geocoder'
+
+#cloudinary for picture database
+gem 'cloudinary', '~> 1.16.0'
+
 
 group :development, :test do
   gem 'pry-byebug'

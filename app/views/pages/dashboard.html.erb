@@ -1,11 +1,11 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<%# <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> %>
 <!------ Include the above in your HEAD tag ---------->
 
 <head>
@@ -22,7 +22,7 @@
 <div class="container bootstrap snippet">
     <div class="row">
   		<div class="col-sm-10"><h1>Bonjour, <%= @user.first_name %> <%= @user.last_name %>, vous êtes magnifique.</h1></div>
-    	<div class="col-sm-2"><a href="#" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="app/assets/images/logo.png"></a></div>
+
     </div>
     <br/>
     <div class="row">
@@ -30,9 +30,12 @@
 
 
       <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h5>Changer la photo</h5>
-        <input type="file" class="text-center center-block file-upload">
+        <% if @user.photo.attached? %>
+              <%= cl_image_tag @user.photo.key, class: "img-thumbnail"%>
+        <% else %>
+          <img src="https://source.unsplash.com/random" class="avatar img-circle img-thumbnail" alt="avatar">
+        <% end %>
+        <h5>Dashboard personel</h5>
       </div></hr><br>
 
 
@@ -61,41 +64,32 @@
         </div><!--/col-3-->
     	<div class="col-sm-9">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">Editer le profil</a></li>
-                <li><a data-toggle="tab" href="#messages">Mes offres</a></li>
-                <li><a data-toggle="tab" href="#settings">Réservation de mes offres</a></li>
+                <li class="active"><a data-toggle="tab" href="#profile">Editer le profil</a></li>
+                <li><a data-toggle="tab" href="#offers">Mes offres</a></li>
+                <li><a data-toggle="tab" href="#offers-booked">Réservation de mes offres</a></li>
+                <li><a data-toggle="tab" href="#history">Historique de mes réservations</a></li>
               </ul>
 
             <%# profile %>
           <div class="tab-content">
-            <div class="tab-pane active" id="home">
+            <div class="tab-pane active" id="profile">
             <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
                 <hr>
 
                 <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
 
 
-
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Sauvegarder</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Annuler</button>
-                            </div>
-                      </div>
-              	</form>
-
               <hr>
 
              </div><!--/tab-Mes offres-->
-             <div class="tab-pane" id="messages">
+             <div class="tab-pane" id="offers">
 
                <h4>Vous pouvez éditer vos offres ici, passez une bonne journée</h4>
 
                <hr>
 
                 <% @offers.each do |offer|%>
-                  <div class="card-product">
+                  <div class="card-product mb-4">
                     <img src="<%= offer.photos %>" />
                     <div class="card-product-infos">
                       <h2><%= offer.title %></h2>
@@ -105,16 +99,24 @@
                       <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
                     </div>
                   </div>
-                  <br/>
                 <% end %>
+              </div><!--/Réservation de mes offres-->
 
-
-             </div><!--/Réservation de mes offres-->
-             <div class="tab-pane" id="settings">
+              <div class="tab-pane" id="offers-booked">
                 <%# <% if @bookings.count == 0 %>
                   <h4>Tiens, personne ne veut de vos sourires pour l'instant</h4>
                   <hr>
+               </div><!--/Réservation de mes offres-->
+
+
+              <div class="tab-pane" id="history"><!--/historique de mes résa-->
+                <%# <% if @bookings.count == 0 %>
+                  <h4>Vos derniers cours réservés</h4>
+                  <hr>
+                  <%= render partial:'pages/shared/history', :locals => { user: @user } %>
+
               </div><!--/tab-pane-->
+
           </div><!--/tab-content-->
 
         </div><!--/col-9-->
