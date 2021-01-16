@@ -65,14 +65,15 @@
         </div><!--/col-3-->
     	<div class="col-sm-9">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">Editer le profil</a></li>
-                <li><a data-toggle="tab" href="#messages">Mes offres</a></li>
-                <li><a data-toggle="tab" href="#settings">Réservation de mes offres</a></li>
+                <li class="active"><a data-toggle="tab" href="#profile">Editer le profil</a></li>
+                <li><a data-toggle="tab" href="#offers">Mes offres</a></li>
+                <li><a data-toggle="tab" href="#offers-booked">Réservation de mes offres</a></li>
+                <li><a data-toggle="tab" href="#history">Historique de mes réservations</a></li>
               </ul>
 
             <%# profile %>
           <div class="tab-content">
-            <div class="tab-pane active" id="home">
+            <div class="tab-pane active" id="profile">
             <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
                 <hr>
 
@@ -85,24 +86,24 @@
                                	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Annuler</button>
                             </div>
                       </div>
-              	</form>
 
               <hr>
 
              </div><!--/tab-Mes offres-->
-             <div class="tab-pane" id="messages">
+             <div class="tab-pane" id="offers">
 
                <h4>Vous pouvez éditer vos offres ici, passez une bonne journée</h4>
 
                <hr>
 
                 <% @offers.each do |offer|%>
-                  <div class="card-product">
+                  <div class="card-product mb-4">
                     <% if offer.photo.attached?%>
                       <%= cl_image_tag offer.photo.key %>
                     <%else %>
                       <img src="https://source.unsplash.com/random" />
                     <% end %>
+
                     <div class="card-product-infos">
                       <h2><%= offer.title %></h2>
                       <p><%= offer.description %></p>
@@ -111,16 +112,24 @@
                       <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
                     </div>
                   </div>
-                  <br/>
                 <% end %>
+              </div><!--/Réservation de mes offres-->
 
-
-             </div><!--/Réservation de mes offres-->
-             <div class="tab-pane" id="settings">
+              <div class="tab-pane" id="offers-booked">
                 <%# <% if @bookings.count == 0 %>
                   <h4>Tiens, personne ne veut de vos sourires pour l'instant</h4>
                   <hr>
+               </div><!--/Réservation de mes offres-->
+
+
+              <div class="tab-pane" id="history"><!--/historique de mes résa-->
+                <%# <% if @bookings.count == 0 %>
+                  <h4>Vos derniers cours réservés</h4>
+                  <hr>
+                  <%= render partial:'pages/shared/history', :locals => { user: @user } %>
+
               </div><!--/tab-pane-->
+
           </div><!--/tab-content-->
 
         </div><!--/col-9-->
