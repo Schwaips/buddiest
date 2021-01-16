@@ -37,7 +37,7 @@ gem 'devise'
 gem 'pundit'
 
 gem 'faker'
-
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry-byebug'
