@@ -1,6 +1,6 @@
-<%# <h2>Edit <%= user.to_s.humanize %> <h2></h2>
+<%# <h2>Edit <%= user.to_s.humanize %>
 
-<%= simple_form_for(user, as: user, url: registration_path(user), html: { method: :put }) do |f| %>
+<%= simple_form_for(user, as: user, url: profile_path) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -8,17 +8,24 @@
 
 
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+                hint: "Laissez ce champ vide si vous ne souhaitez pas changer votre mot de passe",
                 required: false,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "Nouveau mot de passe" } %>
     <%= f.input :password_confirmation,
                 required: false,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "Nouveau mot de passe" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "Confirmer votre password actuel",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
     <%= f.input :first_name, label: "Prénom"  %>
+    <%= f.input :last_name, label: "Nom"  %>
+    <%= f.input :address, label: "Adresse"  %>
+    <%= f.input :phone_number, label: "Téléphone"  %>
+    <%# <%= f.input :date_of_birth, label: "Date de naissance"  %>
+    <%# <%= f.input :nationality, label: "Nationalité"  %>
+    <%# <%= f.input :gender, label: "Genre"  %>
+    <%= f.input :photo, as: :file %>
                 <%# rajouter des inputs %>
   </div>
 

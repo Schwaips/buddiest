@@ -30,9 +30,13 @@
 
 
       <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h5>Changer la photo</h5>
-        <input type="file" class="text-center center-block file-upload">
+        <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, class:'img-thumbnail' %>
+        <% else %>
+          <img src="https://source.unsplash.com/random" class="img-thumbnail" alt="avatar"  style="width: 150px; height: 200px;">
+        <% end %>
+        <h5>Avatar</h5>
+        <%# <input type="file" class="text-center center-block file-upload"> %>
       </div></hr><br>
 
 
@@ -94,7 +98,12 @@
 
                 <% @offers.each do |offer|%>
                   <div class="card-product mb-4">
-                    <img src="<%= offer.photos %>" />
+                    <% if offer.photo.attached?%>
+                      <%= cl_image_tag offer.photo.key %>
+                    <%else %>
+                      <img src="https://source.unsplash.com/random" />
+                    <% end %>
+
                     <div class="card-product-infos">
                       <h2><%= offer.title %></h2>
                       <p><%= offer.description %></p>
