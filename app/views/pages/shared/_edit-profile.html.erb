@@ -1,6 +1,6 @@
 <%# <h2>Edit <%= user.to_s.humanize %> <h2></h2>
 
-<%= simple_form_for(user, as: user, url: registration_path(user), html: { method: :put }) do |f| %>
+<%= simple_form_for(user, as: user, url: profile_path(user)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
