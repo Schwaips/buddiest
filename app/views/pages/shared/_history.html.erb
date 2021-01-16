@@ -1,0 +1,14 @@
+<h2 class="mt-5">Cours réservés </h2>
+
+<% @user.bookings.each do |booking| %>
+  <div class="card-product mb-4">
+    <img src="<%= booking.offer.photos %>" />
+    <div class="card-product-infos">
+      <h2><%= booking.offer.title %></h2>
+      <p> <%= booking.offer.price_per_hour%>€ par heure </p>
+      <p> <%= booking.status %> </p>
+      <br/>
+      <%= link_to  "Voir la page de l'offre", "/offers/#{booking.offer.id}", class: "btn btn-primary mb-2" %>
+    </div>
+  </div>
+<% end %>
