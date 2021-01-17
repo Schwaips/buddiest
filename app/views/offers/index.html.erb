@@ -44,6 +44,11 @@
 
     <!-- /.row -->
 
+    <% if @offers.empty? %>
+      <h2>Désolé, nous n'avons rien trouvé.</h2>
+      <p>Voici un sourire à la place</p>
+    <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610904406/buddiest/smile-icon.png" alt="">
+      <% else %>
     <div class="row">
         <% @offers.each do |offer| %>
           <div class="col-4 mb-5">
@@ -70,7 +75,8 @@
     <!-- /.row -->
    </div>
   <!-- /.container -->
-
+  <!-- end of emptyu research -->
+  <% end %>
 <div id="map"
       style="width: 100%;"
       data-markers="<%= @markers.to_json %>"
