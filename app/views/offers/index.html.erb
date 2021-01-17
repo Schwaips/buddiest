@@ -31,11 +31,13 @@
         <a class="btn btn-red" href="#">S'inscrire &raquo;</a>
         <% end %>
       </div>
-          <div class="form-group d-flex align-items-center">
-            <%# <input id="search" class="form-control search-control" name="query" placeholder="Chercher une offre" method="GET"> %>
-            <input type="search" class="form-control search-control" name="query" id="search" placeholder="Chercher une offre" method="GET">
-            <button type="submit" class="btn btn-success"> Chercher </button>
+      <form action="/offers">
+        <div class="form-group d-flex align-items-center">
+          <%# <input id="search" class="form-control search-control" name="query" placeholder="Chercher une offre" method="GET"> %>
+          <input type="search" class="form-control search-control" name="query" id="search" placeholder="Chercher une offre" method="GET">
+          <button type="submit" class="btn btn-success"> Chercher </button>
         </div>
+      </form>
     </div>
 
     <%# map %>

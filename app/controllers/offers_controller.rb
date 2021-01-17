@@ -13,7 +13,7 @@ class OffersController < ApplicationController
     end
     # moteur de recherche
     if params[:query].present?
-      @offers = Offer.where('name ILIKE ?', "%#{params[:query]}%")
+      @offers = Offer.where('title ILIKE ?', "%#{params[:query]}%")
     else
       @offers = Offer.all
     end
