@@ -1,7 +1,7 @@
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-lewagon-white fixed-top">
   <%= link_to "/", class: "navbar-brand" do %>
-    <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610887071/buddiest/logo_buddiest_jfxjtq.png" >
+     <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610887071/buddiest/logo_buddiest_jfxjtq.png" href="/">
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,6 +11,7 @@
 
   <div class="collapse navbar-collapse fixed-top" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto flexed-end">
+
       <% if user_signed_in? %>
          <li class="nav-item">
             <%= link_to "#{current_user.first_name}", offers_path, class: "nav-link" %>
