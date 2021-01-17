@@ -13,6 +13,8 @@
     </div>
   </div>
 
+
+
   <!-- Page Content -->
   <div class="container">
 
@@ -24,11 +26,16 @@
         <p>Vous êtes magnifique aujourd'hui. Comme toujours </p>
         <p>La vie est belle et la communuauté buddiest veut partager leurs joies avec vous.</p>
 
-          <%= link_to  "Proposer un sourire", new_offer_path, class: "btn btn-red btn-lg" %>
+          <%= link_to  "Proposer un sourire", new_offer_path, class: "btn btn-green btn-lg" %>
           <% else %>
         <a class="btn btn-red" href="#">S'inscrire &raquo;</a>
         <% end %>
       </div>
+          <div class="form-group d-flex align-items-center">
+            <%# <input id="search" class="form-control search-control" name="query" placeholder="Chercher une offre" method="GET"> %>
+            <input type="search" class="form-control search-control" name="query" id="search" placeholder="Chercher une offre" method="GET">
+            <button type="submit" class="btn btn-success"> Chercher </button>
+        </div>
     </div>
 
     <%# map %>
@@ -61,9 +68,10 @@
     <!-- /.row -->
    </div>
   <!-- /.container -->
-
+<!--
 <div id="map"
       style="width: 100%;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+ -->

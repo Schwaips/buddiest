@@ -11,6 +11,7 @@
 
   <div class="collapse navbar-collapse fixed-top" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto flexed-end">
+
       <% if user_signed_in? %>
          <li class="nav-item">
             <%= link_to "#{current_user.first_name}", offers_path, class: "nav-link" %>
