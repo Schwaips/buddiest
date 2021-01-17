@@ -17,7 +17,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
@@ -33,7 +32,8 @@
         <% if @user.photo.attached? %>
               <%= cl_image_tag @user.photo.key, class: "img-thumbnail"%>
         <% else %>
-          <img src="https://source.unsplash.com/random" class="avatar img-circle img-thumbnail" alt="avatar">
+          <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'img-thumbnail', 'aria-haspopup': true, 'aria-expanded': false %>
+
         <% end %>
         <h5>Dashboard personel</h5>
       </div></hr><br>
