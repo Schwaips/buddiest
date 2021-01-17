@@ -33,31 +33,31 @@
               <%= cl_image_tag @user.photo.key, class: "img-thumbnail"%>
         <% else %>
           <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'img-thumbnail', 'aria-haspopup': true, 'aria-expanded': false %>
-
         <% end %>
-        <h5>Dashboard personel</h5>
       </div></hr><br>
 
 
-          <div class="panel panel-default">
-            <div class="panel-heading">Bio <i class="fa fa-link fa-1x"></i></div>
+          <div class="panel panel-primary">
+            <div class="panel-heading">Bio</i></div>
             <div class="panel-body"><p>Coucou tout le monde, je suis plutot....mais aussi un peu, et avant....mais gentil..très gentil</p></div>
           </div>
 
+          <div class="panel panel-primary">
+          <div class="panel-heading">Activity</i></div>
+            <ul class="list-group">
+              <%# <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li> %>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Offres</strong></span> <%= @user.offers.count %></li>
+              <%# mes offres que j'ai publié %>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Réservation de mes offres</strong></span> 123</li>
+              <%# <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+              <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li> %>
+            </ul>
+          </div>
 
-          <ul class="list-group">
-            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Offres</strong></span> <%= @user.offers.count %></li>
-            <%# mes offres que j'ai publié %>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Réservation de mes offres</strong></span> 123</li>
-            <%# <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li> %>
-          </ul>
-
-          <div class="panel panel-default">
+          <div class="panel panel-primary">
             <div class="panel-heading">Historique de mon activité</div>
             <div class="panel-body">
-            	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+            	Compte créé le <%= current_user.created_at.time.strftime("%d/%m/%Y") %><i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
             </div>
           </div>
 
@@ -78,6 +78,7 @@
                 </li>
             </ul>
 
+              <br/>
             <%# profile %>
           <div class="tab-content">
             <div class="tab-pane active" id="profile">
