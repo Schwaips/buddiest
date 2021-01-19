@@ -31,9 +31,9 @@
 		<div class="col-sm-3"><!--left col-->
       <div class="text-center">
         <% if @user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key, class: "img-thumbnail"%>
+              <%= cl_image_tag @user.photo.key, class: "avatar-bordered img-circle"%>
         <% else %>
-          <img src="https://source.unsplash.com/random" class="avatar img-circle img-thumbnail" alt="avatar">
+          <img src="https://source.unsplash.com/random" class="avatar-bordered img-circle" alt="avatar">
         <% end %>
         <h5>Dashboard personel</h5>
       </div></hr><br>
@@ -96,7 +96,7 @@
                 <h2><%= offer.title %></h2>
                 <p><%= offer.description %></p>
                 <br/>
-                <%= link_to  "Voir la page de l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
+                <%= link_to  "Voir l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
                 <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
               </div>
             </div>
@@ -110,41 +110,41 @@
           <h4>Tiens, personne ne veut de vos sourires pour l'instant</h4>
           <hr>
                           <!-- Vision numéro 2 -->
-          <div class="container">
+
           <!-- Faire deux colonnes -->
-            <div class="row">
-              <div class="col"><!-- Colonne 1 : En attente -->
-                <h4>Réservations en attente :</h4>
-                <% @offers.each do |offer|%>
-                  <div class="card-product mb-4">
-                    <img src="<%= offer.photos %>" />
-                    <div class="card-product-infos">
-                      <h2><%= offer.title %></h2>
-                      <p><%= offer.description %></p>
-                      <br/>
-                      <%= link_to  "Voir la page de l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
-                      <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
-                    </div>
+          <div class="row">
+            <div class="col"><!-- Colonne 1 : En attente -->
+              <h4>Réservations en attente :</h4>
+              <% @offers.each do |offer|%>
+                <div class="card-product mb-4">
+                  <img src="<%= offer.photos %>" />
+                  <div class="card-product-infos">
+                    <h2><%= offer.title %></h2>
+                    <p><%= offer.description %></p>
+                    <br/>
+                    <%= link_to  "Voir l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
+                    <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
                   </div>
-                <% end %>
-              </div>
-              <div class="col"><!-- Colonne 2 : Colonne validée-->
-                <h4>Réservations validées :</h4>
-                <% @offers.each do |offer|%>
-                  <div class="card-product mb-4">
-                    <img src="<%= offer.photos %>" />
-                    <div class="card-product-infos">
-                      <h2><%= offer.title %></h2>
-                      <p><%= offer.description %></p>
-                      <br/>
-                      <%= link_to  "Voir la page de l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
-                      <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
-                    </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col"><!-- Colonne 2 : Colonne validée-->
+              <h4>Réservations validées :</h4>
+              <% @offers.each do |offer|%>
+                <div class="card-product mb-4">
+                  <img src="<%= offer.photos %>" />
+                  <div class="card-product-infos">
+                    <h2><%= offer.title %></h2>
+                    <p><%= offer.description %></p>
+                    <br/>
+                    <%= link_to  "Voir l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
+                    <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
                   </div>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </div>
           </div>
+
 
         </div><!--/Réservation de mes offres-->
 
