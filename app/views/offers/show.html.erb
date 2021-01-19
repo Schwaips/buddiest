@@ -8,67 +8,49 @@
   <h1><%= @offer.title.upcase %></h1>
   </div>
 <% end %>
+
 <div class="container">
-    <div class="d-flex justify-content-between">
-      <div class="offer-details">
-        <div class="d-flex align-items-center mb-5">
-          <% if @offer.user.photo.attached? %>
-            <%= cl_image_tag @offer.user.photo.key, class: "show_avatar" %>
-          <% else %>
-            <img src="https://source.unsplash.com/random" alt="" class="show_avatar">
-          <% end %>
-          <h2 class="pl-5">Proposé par <%= @offer.user.first_name %> </h2>
-        </div>
-          <div class="booking-card">
-            <h2><%= @offer.title %></h2>
-            <p><%= @offer.description %></p>
-            <p> <i class="fas fa-euro-sign"></i> <%= @offer.price_per_hour %>€/h</p>
-          </div>
-          <br>
-          <%= link_to  "Back to the list", "/offers", class: "btn btn-success" %>
-          <br/> <br/>
-           <% if @offer.user == current_user %>
-          <%= link_to "Effacer l'offre",
-                destroy_path,
-                method: :delete,
-                class: "btn btn-warning",
-                data: { confirm: "Effacer #{@offer.title}?" } %>
-        <% else %>
-          <div></div>
+
+  <div class="border-bottom pb-3 w-50 d-flex align-items-center mb-2">
+    <% if @offer.user.photo.attached? %>
+      <%= cl_image_tag @offer.user.photo.key, class: "avatar-large" %>
+    <% else %>
+        <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: "avatar-large" %>
+    <% end %>
+    <h3 class="pl-3">Proposé par <%= @offer.user.first_name %> </h3>
+
+    <div class="pl-4">
+      <% if @offer.user == current_user %>
+        <%= link_to destroy_path, method: :delete, class: "btn btn-warning", data: { confirm: "Effacer #{@offer.title}?" } do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      <% else %>
+        <div></div>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-between mt-4">
+    <div>
+      <div class="offer-card">
+        <h2><%= @offer.title %></h2>
+        <p> <i class="fas fa-euro-sign"></i> <%= @offer.price_per_hour %>€/h</p>
+        <p class="mt-5"><%= @offer.description %></p>
+      </div>
+    </div>
+
+    <div>
+      <div class="form-group booking-card">
+        <h5 class="mb-4"><strong>Vous êtes interessé ?</strong></h5>
+        <h6>Reservez dès maintenant</h6>
+        <%= simple_form_for [@offer, @booking] do |f| %>
+          <%= f.input :date_begin, as: :string, label: "Date de début", input_html: {class: "datepicker"}  %>
+          <%= f.input :date_end, as: :string, label: "Date de fin", input_html: {class: "datepicker"} %>
+          <%= f.submit "Réserver ce cours", class: "btn btn-success btn-block" %>
         <% end %>
       </div>
-
-      <div class="box-2">
-        <div class="form-group booking-card">
-          <h5>Vous êtes interessé?</h5>
-          <h6>Reservez dès maintenant</h6>
-          <%= simple_form_for [@offer, @booking] do |f| %>
-            <%= f.input :date_begin, as: :date, label: "Date de début" %>
-            <%= f.input :date_end, as: :date, label: "Date de fin" %>
-            <%= f.submit "Réserver ce cours", class: "btn btn-dark" %>
-          <% end %>
-        <!-- form group -->
-        </div>
-        <div class="booking-card">
-          <h6>Localisation de l'offre</h6>
-        
-            <div id="map"
-                  style="width: 100%;"
-                  data-markers="<%= @markers.to_json %>"
-                  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-            </div>
-
-        </div>
-      <!-- Box 2 pour la D-flex -->
-      </div>
-
-    <!-- D flex -->
     </div>
- <!-- container -->
+  </div>
 </div>
 
-
-
-<br>
-
-<br>
