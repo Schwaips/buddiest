@@ -10,8 +10,7 @@
 
 <head>
   <title>Buddiest, dashboard</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -19,104 +18,131 @@
 
 <hr>
 <div class="container bootstrap snippet">
-    <div class="row">
-  		<div class="col-sm-10"><h1>Bonjour, <%= @user.first_name %> <%= @user.last_name %>, vous êtes magnifique.</h1></div>
-
+  <div class="row">
+		<div class="col-sm-10">
+      <h1>Bonjour, <%= @user.first_name %> <%= @user.last_name %>, vous êtes magnifique.</h1>
     </div>
-    <br/>
-    <div class="row">
-  		<div class="col-sm-3"><!--left col-->
+  </div>
 
+  <br/>
 
+  <div class="row">
+		<div class="col-sm-3"><!--left col-->
       <div class="text-center">
         <% if @user.photo.attached? %>
-              <%= cl_image_tag @user.photo.key, class: "img-thumbnail"%>
+              <%= cl_image_tag @user.photo.key, class: "avatar-bordered img-circle"%>
         <% else %>
-          <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'img-thumbnail', 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-bordered img-circle' %>
         <% end %>
       </div></hr><br>
+    
+      <div class="panel panel-default">
+        <div class="panel-heading">Bio <i class="fa fa-link fa-1x"></i></div>
+        <div class="panel-body"><p>Coucou tout le monde, je suis plutot....mais aussi un peu, et avant....mais gentil..très gentil</p></div>
+      </div>
 
+      <ul class="list-group">
+        <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Offres</strong></span> <%= @user.offers.count %></li>
+        <%# mes offres que j'ai publié %>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Réservation de mes offres</strong></span> 123</li>
+        <%# <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li> %>
+      </ul>
 
-          <div class="panel panel-primary">
-            <div class="panel-heading">Bio</i></div>
-            <div class="panel-body"><p>Coucou tout le monde, je suis plutot....mais aussi un peu, et avant....mais gentil..très gentil</p></div>
-          </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Historique de mon activité</div>
+        <div class="panel-body">
+        	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+        </div>
+      </div>
 
-          <div class="panel panel-primary">
-          <div class="panel-heading">Activity</i></div>
-            <ul class="list-group">
-              <%# <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li> %>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Offres</strong></span> <%= @user.offers.count %></li>
-              <%# mes offres que j'ai publié %>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Réservation de mes offres</strong></span> 123</li>
-              <%# <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li> %>
-            </ul>
-          </div>
+    </div><!--/col-3-->
 
-          <div class="panel panel-primary">
-            <div class="panel-heading">Historique de mon activité</div>
-            <div class="panel-body">
-            	Compte créé le <%= current_user.created_at.time.strftime("%d/%m/%Y") %><i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+    <div class="col-sm-9">
+      <ul class="list-inline tabs-underlined">
+        <li>
+          <a data-toggle="tab" href="#profile" class="tab-underlined">Editer le profil</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#offers" class="tab-underlined active">Mes offres</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#offers-booked" class="tab-underlined">Réservation de mes offres</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#history" class="tab-underlined">Historique de mes réservations</a>
+        </li>
+      </ul>
+
+          <%# profile %>
+      <div class="tab-content">
+        <div class="tab-pane" id="profile">
+          <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
+            <hr>
+            <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
+            <hr>
+        </div><!--/tab-Mes offres-->
+
+        <div class="tab-pane active" id="offers">
+            <!--S'il n'y a pas de statut == en attente-->
+          <hr>
+          <% @current_user.offers.each do |offer|%>
+            <div class="card-product mb-4">
+              <img src="<%= offer.photos %>" />
+              <div class="card-product-infos">
+                <h2><%= offer.title %></h2>
+                <p><%= offer.description %></p>
+                <br/>
+                <%= link_to  "Voir l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
+                <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+            <!--/Réservation de mes offres-->
+
+        <div class="tab-pane" id="offers-booked">
+              <%# <% if @bookings.count == 0 %>
+          <h4>Tiens, personne ne veut de vos sourires pour l'instant</h4>
+          <hr>
+                          <!-- Vision numéro 2 -->
+
+          <!-- Faire deux colonnes -->
+          <div class="row">
+            <div class="col"><!-- Colonne 1 : En attente -->
+              <h4>Réservations en attente :</h4>
+              <% @offers.each do |offer|%>
+                <div class="card-product mb-4">
+                  <img src="<%= offer.photos %>" />
+                  <div class="card-product-infos">
+                    <h2><%= offer.title %></h2>
+                    <p><%= offer.description %></p>
+                    <br/>
+                    <%= link_to  "Voir l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
+                    <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col"><!-- Colonne 2 : Colonne validée-->
+              <h4>Réservations validées :</h4>
+              <% @offers.each do |offer|%>
+                <div class="card-product mb-4">
+                  <img src="<%= offer.photos %>" />
+                  <div class="card-product-infos">
+                    <h2><%= offer.title %></h2>
+                    <p><%= offer.description %></p>
+                    <br/>
+                    <%= link_to  "Voir l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
+                    <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
+                  </div>
+                </div>
+              <% end %>
             </div>
           </div>
 
-        </div><!--/col-3-->
-    	<div class="col-sm-9">
-            <ul class="list-inline tabs-underlined">
-                <li>
-                  <a data-toggle="tab" href="#profile" class="tab-underlined active">Editer le profil</a>
-                </li>
-                <li>
-                  <a data-toggle="tab" href="#offers" class="tab-underlined">Mes offres</a>
-                </li>
-                <li>
-                  <a data-toggle="tab" href="#offers-booked" class="tab-underlined">Réservation de mes offres</a>
-                </li>
-                <li>
-                  <a data-toggle="tab" href="#history" class="tab-underlined">Historique de mes réservations</a>
-                </li>
-            </ul>
-
-              <br/>
-            <%# profile %>
-          <div class="tab-content">
-            <div class="tab-pane active" id="profile">
-            <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
-                <hr>
-
-                <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
-
-
-              <hr>
-
-             </div><!--/tab-Mes offres-->
-             <div class="tab-pane" id="offers">
-
-               <h4>Vous pouvez éditer vos offres ici, passez une bonne journée</h4>
-
-               <hr>
-
-                <% @offers.each do |offer|%>
-                  <div class="card-product mb-4">
-                    <img src="<%= offer.photos %>" />
-                    <div class="card-product-infos">
-                      <h2><%= offer.title %></h2>
-                      <p><%= offer.description %></p>
-                      <br/>
-                      <%= link_to  "Voir la page de l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
-                      <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
-                    </div>
-                  </div>
-                <% end %>
-              </div><!--/Réservation de mes offres-->
-
-              <div class="tab-pane" id="offers-booked">
-                <%# <% if @bookings.count == 0 %>
-                  <h4>Tiens, personne ne veut de vos sourires pour l'instant</h4>
-                  <hr>
-               </div><!--/Réservation de mes offres-->
-
                   <div class="card-product mb-4">
                     <img src="<%= offer.photos %>" />
                     <div class="card-product-infos">
@@ -130,16 +156,18 @@
 
 
 
-              <div class="tab-pane" id="history"><!--/historique de mes résa-->
-                <%# <% if @bookings.count == 0 %>
-                  <h4>Vos derniers cours réservés</h4>
-                  <hr>
-                  <%= render partial:'pages/shared/history', :locals => { user: @user } %>
+        </div><!--/Réservation de mes offres-->
 
-              </div><!--/tab-pane-->
+        <div class="tab-pane" id="history"><!--/historique de mes résa-->
+              <%# <% if @bookings.count == 0 %>
+          <h4>Vos derniers cours réservés</h4>
+          <hr>
+          <%= render partial:'pages/shared/history', :locals => { user: @user } %>
+        </div><!--/tab-pane-->
 
-          </div><!--/tab-content-->
+      </div><!--/tab-content-->
 
-        </div><!--/col-9-->
-    </div><!--/row-->
+    </div><!--/col-9-->
+  </div><!--/row-->
+</div>
 
