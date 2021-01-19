@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # route to correct update
   devise_for :users, :controllers => {:registrations => "users/registrations" }
 
-  root to: 'offers#index'
+  root to: 'pages#home'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
