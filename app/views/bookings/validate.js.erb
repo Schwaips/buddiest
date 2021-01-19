@@ -1,0 +1,1 @@
+$('#booking-status').html("<%= escape_javascript render(:partial => 'pages/shared/bookings_status', :locals => { :pendingBookings => @pendingBookings, :statuedBookings => @statuedBookings }) %>");

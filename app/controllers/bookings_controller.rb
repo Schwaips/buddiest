@@ -18,10 +18,60 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = "En attente de validation de l'utilisateur"
     authorize @booking
-    if @booking.save
-      redirect_to offer_path(@offer)
-    else
-      render :new
+      if @booking.save
+        redirect_to offer_path(@offer)
+      else
+        render :new
+      end
+  end
+
+  def validate
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.update(status: "Validé")
+    # pour acces aux partials .js.erb
+    @user = current_user
+    @offers = @user.offers
+
+    # access for booking data
+    @bookings = []
+    @offers.each do |offer|
+      @bookings << offer.bookings unless offer.bookings.empty?
+    end
+    @bookings.flatten!
+
+    @pendingBookings = @bookings.select do |booking|
+      booking.status == "En attente"
+    end
+
+    @statuedBookings = @bookings.select do |booking|
+      booking.status != "En attente"
+    end
+  end
+
+
+  def refused
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.update(status: "Refusé")
+
+
+    @user = current_user
+    @offers = @user.offers
+
+    # access for booking data
+    @bookings = []
+    @offers.each do |offer|
+      @bookings << offer.bookings unless offer.bookings.empty?
+    end
+    @bookings.flatten!
+
+    @pendingBookings = @bookings.select do |booking|
+    booking.status == "En attente"
+    end
+
+    @statuedBookings = @bookings.select do |booking|
+      booking.status != "En attente"
     end
   end
 
