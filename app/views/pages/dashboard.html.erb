@@ -117,6 +117,18 @@
                   <hr>
                </div><!--/Réservation de mes offres-->
 
+                  <div class="card-product mb-4">
+                    <img src="<%= offer.photos %>" />
+                    <div class="card-product-infos">
+                      <h2><%= offer.title %></h2>
+                      <p><%= offer.description %></p>
+                      <br/>
+                      <%= link_to  "Voir la page de l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
+                      <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
+                    </div>
+
+
+
 
               <div class="tab-pane" id="history"><!--/historique de mes résa-->
                 <%# <% if @bookings.count == 0 %>
