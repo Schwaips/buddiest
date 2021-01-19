@@ -1,49 +1,70 @@
 
-
-<br>
-
-<br>
-
-
 <% if @offer.photo.attached? %>
-  <div style=" background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @offer.photos.key %>')"></div>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @offer.photo.attached? ? cl_image_path(@offer.photo.key, crop: :fit) : 'https://images.unsplash.com/photo-1490750967868-88aa4486c946' %>">
+   <h1><%= @offer.title.upcase %></h1>
+</div>
 <% else %>
-  <div> </div>
+  <div class="card-category" style=" background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490750967868-88aa4486c946')">
+  <h1><%= @offer.title.upcase %></h1>
+  </div>
 <% end %>
 <div class="container">
-  <div class="d-flex justify-content-between">
-    <div class="offer-details">
-      <div class="d-flex align-items-center mb-5">
-      <% if @offer.user.photo.attached? %>
-        <%= cl_image_tag @offer.user.photo.key, class: "show_avatar" %>
-      <% else %>
-        <img src="https://source.unsplash.com/random" alt="" class="show_avatar">
-      <% end %>
-      <h2 class="pl-5"> <%= @offer.user.first_name %> <%= @offer.user.last_name %>  </h2>
-      </div>
-      <h2><%= @offer.title %></h2>
-      <p><%= @offer.description %></p>
-      <p> Mon prix : <%= @offer.price_per_hour %>€ par heure</p>
-      <%= link_to  "Back to the list", "/offers" %>
-  </div>
-    <div>
-      <% if @offer.user == current_user %>
-        <%= link_to "Effacer la mission",
-          destroy_path,
-          method: :delete,
-          data: { confirm: "Effacer #{@offer.title}?" } %>
+    <div class="d-flex justify-content-between">
+      <div class="offer-details">
+        <div class="d-flex align-items-center mb-5">
+          <% if @offer.user.photo.attached? %>
+            <%= cl_image_tag @offer.user.photo.key, class: "show_avatar" %>
           <% else %>
-          <%=  %>
-      <% end %>
+            <img src="https://source.unsplash.com/random" alt="" class="show_avatar">
+          <% end %>
+          <h2 class="pl-5">Proposé par <%= @offer.user.first_name %> </h2>
+        </div>
+          <div class="booking-card">
+            <h2><%= @offer.title %></h2>
+            <p><%= @offer.description %></p>
+            <p> <i class="fas fa-euro-sign"></i> <%= @offer.price_per_hour %>€/h</p>
+          </div>
+          <br>
+          <%= link_to  "Back to the list", "/offers", class: "btn btn-success" %>
+          <br/> <br/>
+           <% if @offer.user == current_user %>
+          <%= link_to "Effacer l'offre",
+                destroy_path,
+                method: :delete,
+                class: "btn btn-warning",
+                data: { confirm: "Effacer #{@offer.title}?" } %>
+        <% else %>
+          <div></div>
+        <% end %>
+      </div>
+
+      <div class="box-2">
+        <div class="form-group booking-card">
+          <h5>Vous êtes interessé?</h5>
+          <h6>Reservez dès maintenant</h6>
+          <%= simple_form_for [@offer, @booking] do |f| %>
+            <%= f.input :date_begin, as: :date, label: "Date de début" %>
+            <%= f.input :date_end, as: :date, label: "Date de fin" %>
+            <%= f.submit "Réserver ce cours", class: "btn btn-dark" %>
+          <% end %>
+        <!-- form group -->
+        </div>
+        <div class="booking-card">
+          <h6>Localisation de l'offre</h6>
+        
+            <div id="map"
+                  style="width: 100%;"
+                  data-markers="<%= @markers.to_json %>"
+                  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+
+        </div>
+      <!-- Box 2 pour la D-flex -->
+      </div>
+
+    <!-- D flex -->
     </div>
-  <div class="form-group booking-card">
-    <%= simple_form_for [@offer, @booking] do |f| %>
-      <%= f.input :date_begin, as: :date, label: "Date de début" %>
-      <%= f.input :date_end, as: :date, label: "Date de fin" %>
-      <%= f.submit "Réserver ce cours", class: "btn btn-dark" %>
-    <% end %>
-  </div>
- </div>
+ <!-- container -->
 </div>
 
 

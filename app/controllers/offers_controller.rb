@@ -4,12 +4,19 @@ class OffersController < ApplicationController
   def index
     @offers = Offer.all
 
-    # @markers = @offers.geocoded.map do |offer|
-    #   {
-    #     lat: offer.latitude,
-    #     lng: offer.longitude
-    #   }
-    # end
+    # geocode
+    @markers = @offers.geocoded.map do |offer|
+      {
+        lat: offer.latitude,
+        lng: offer.longitude
+      }
+    end
+    # moteur de recherche
+    if params[:query].present?
+      @offers = Offer.where('title ILIKE ?', "%#{params[:query]}%")
+    else
+      @offers = Offer.all
+    end
   end
 
   def new
@@ -31,7 +38,13 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     @booking = Booking.new
+
+    @markers = {
+        lat: @offer.latitude,
+        lng: @offer.longitude
+      }
     authorize @offer
+
   end
 
 

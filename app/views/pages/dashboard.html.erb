@@ -16,7 +16,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-
 <hr>
 <div class="container bootstrap snippet">
   <div class="row">
@@ -33,11 +32,10 @@
         <% if @user.photo.attached? %>
               <%= cl_image_tag @user.photo.key, class: "avatar-bordered img-circle"%>
         <% else %>
-          <img src="https://source.unsplash.com/random" class="avatar-bordered img-circle" alt="avatar">
+          <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-bordered img-circle' %>
         <% end %>
-        <h5>Dashboard personel</h5>
       </div></hr><br>
-
+    
       <div class="panel panel-default">
         <div class="panel-heading">Bio <i class="fa fa-link fa-1x"></i></div>
         <div class="panel-body"><p>Coucou tout le monde, je suis plutot....mais aussi un peu, et avant....mais gentil..très gentil</p></div>
