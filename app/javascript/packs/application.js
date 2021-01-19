@@ -26,7 +26,7 @@ require("channels")
 import "bootstrap";
 
 // External flat pickr
-import "../plugins/flatpickr"
+import { flatpickr } from "../plugins/flatpickr"
 
 
 // Internal imports, e.g:
