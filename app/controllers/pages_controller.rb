@@ -10,14 +10,21 @@ class PagesController < ApplicationController
     # access for booking data
     @bookings = []
     @offers.each do |offer|
-      @bookings << offer.bookings
+      @bookings << offer.bookings unless offer.bookings.empty?
     end
-    @bookings.flatten
-    raise
+    @bookings.flatten!
+
+    @pendingBookings = @bookings.select do |booking|
+      booking.status == "En attente"
+    end
+
+    @statuedBookings = @bookings.select do |booking|
+      booking.status != "En attente"
+    end
   end
 
     # access to update booking to the api in js
-    # if @booking.find(params[:id]).save
+    # if @bookings.find(params[:id]).save
     #   render json: { success: true }
     # else
     #   render json: { success: false, errors: bookings.errors.messages }, status: :unprocessable_entity

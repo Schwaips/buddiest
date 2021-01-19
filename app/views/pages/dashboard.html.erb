@@ -35,7 +35,7 @@
           <%= image_tag "https://res.cloudinary.com/cb-dev/image/upload/v1610885202/buddiest/anonymous.jpg", class: 'avatar-bordered img-circle' %>
         <% end %>
       </div></hr><br>
-    
+
       <div class="panel panel-default">
         <div class="panel-heading">Bio <i class="fa fa-link fa-1x"></i></div>
         <div class="panel-body"><p>Coucou tout le monde, je suis plutot....mais aussi un peu, et avant....mais gentil..très gentil</p></div>
@@ -43,7 +43,7 @@
 
       <ul class="list-group">
         <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Offres</strong></span> <%= @user.offers.count %></li>
+        <li class="list-group-item text-right"><span class="pull-left"><strong>Offres</strong></span> <%= @user.bookings.count %></li>
         <%# mes offres que j'ai publié %>
         <li class="list-group-item text-right"><span class="pull-left"><strong>Réservation de mes offres</strong></span> 123</li>
         <%# <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
@@ -68,7 +68,7 @@
           <a data-toggle="tab" href="#offers" class="tab-underlined active">Mes offres</a>
         </li>
         <li>
-          <a data-toggle="tab" href="#offers-booked" class="tab-underlined">Réservation de mes offres</a>
+          <a data-toggle="tab" href="#books-booked" class="tab-underlined">Réservation de mes offres</a>
         </li>
         <li>
           <a data-toggle="tab" href="#history" class="tab-underlined">Historique de mes réservations</a>
@@ -82,12 +82,12 @@
             <hr>
             <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
             <hr>
-        </div><!--/tab-Mes offres-->
+        </div><!--/tab-profile-->
 
         <div class="tab-pane active" id="offers">
-            <!--S'il n'y a pas de statut == en attente-->
+            <!-- tab mes offres -->
           <hr>
-          <% @current_user.offers.each do |offer|%>
+          <% current_user.offers.each do |offer|%>
             <div class="card-product mb-4">
               <img src="<%= offer.photos %>" />
               <div class="card-product-infos">
@@ -102,60 +102,16 @@
         </div>
 
             <!--/Réservation de mes offres-->
-
-        <div class="tab-pane" id="offers-booked">
+        <div class="tab-pane" id="books-booked">
               <%# <% if @bookings.count == 0 %>
           <h4>Tiens, personne ne veut de vos sourires pour l'instant</h4>
           <hr>
                           <!-- Vision numéro 2 -->
 
           <!-- Faire deux colonnes -->
-          <div class="row">
-            <div class="col"><!-- Colonne 1 : En attente -->
-              <h4>Réservations en attente :</h4>
-              <% @offers.each do |offer|%>
-                <div class="card-product mb-4">
-                  <img src="<%= offer.photos %>" />
-                  <div class="card-product-infos">
-                    <h2><%= offer.title %></h2>
-                    <p><%= offer.description %></p>
-                    <br/>
-                    <%= link_to  "Voir l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
-                    <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-            <div class="col"><!-- Colonne 2 : Colonne validée-->
-              <h4>Réservations validées :</h4>
-              <% @offers.each do |offer|%>
-                <div class="card-product mb-4">
-                  <img src="<%= offer.photos %>" />
-                  <div class="card-product-infos">
-                    <h2><%= offer.title %></h2>
-                    <p><%= offer.description %></p>
-                    <br/>
-                    <%= link_to  "Voir l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
-                    <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
+          <div class="row" id="booking-status">
+             <%= render partial:'pages/shared/bookings_status', :locals => { pendingBookings: @pendingBookings, statuedBookings: @statuedBookings } %>
           </div>
-
-                  <div class="card-product mb-4">
-                    <img src="<%= offer.photos %>" />
-                    <div class="card-product-infos">
-                      <h2><%= offer.title %></h2>
-                      <p><%= offer.description %></p>
-                      <br/>
-                      <%= link_to  "Voir la page de l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
-                      <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
-                    </div>
-
-
-
-
         </div><!--/Réservation de mes offres-->
 
         <div class="tab-pane" id="history"><!--/historique de mes résa-->
