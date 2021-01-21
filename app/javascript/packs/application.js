@@ -30,7 +30,7 @@ import { flatpickr } from "../plugins/flatpickr"
 // select2
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-import { initTabs } from '../components/tabs'
+import { initTabs } from '../components/tabs';
 
 // mapbox for geolocalization:
 import { initMapbox } from '../plugins/init_mapbox';
@@ -39,9 +39,10 @@ import { initMapbox } from '../plugins/init_mapbox';
 // import { fetchWithToken } from '../plugins/init_fetchWithToken';
 
 document.addEventListener('turbolinks:load', () => {
+  initUpdateNavbarOnScroll();
+  initTabs();
   initMapbox();
   flatpickr();
   // fetchWithToken();
-  initUpdateNavbarOnScroll();
-  initTabs();
+
 })

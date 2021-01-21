@@ -12,8 +12,6 @@
   <title>Buddiest, dashboard</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <hr>
@@ -62,9 +60,6 @@
     <div class="col-sm-9">
       <ul class="list-inline tabs-underlined">
         <li>
-          <a data-toggle="tab" href="#profile" class="tab-underlined">Editer le profil</a>
-        </li>
-        <li>
           <a data-toggle="tab" href="#offers" class="tab-underlined active">Mes offres</a>
         </li>
         <li>
@@ -73,19 +68,13 @@
         <li>
           <a data-toggle="tab" href="#history" class="tab-underlined">Historique de mes réservations</a>
         </li>
+        <li>
+          <a data-toggle="tab" href="#profile" class="tab-underlined">Editer le profil</a>
+        </li>
       </ul>
 
-          <%# profile %>
       <div class="tab-content">
-        <div class="tab-pane" id="profile">
-          <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
-            <hr>
-            <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
-            <hr>
-        </div><!--/tab-profile-->
-
         <div class="tab-pane active" id="offers">
-            <!-- tab mes offres -->
           <hr>
           <% current_user.offers.each do |offer|%>
             <div class="card-product mb-4">
@@ -99,17 +88,22 @@
               </div>
             </div>
           <% end %>
-        </div>
+        </div> <!-- tab mes offres -->
 
-            <!--/Réservation de mes offres-->
-        <div class="tab-pane" id="books-booked">
+        <div class="tab-pane" id="profile">
+          <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
+            <hr>
+            <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
+            <hr>
+        </div><!--/tab-profile-->
+
+
+        <div class="tab-pane" id="books-booked"><!--/Réservation de mes offres-->
               <%# <% if @bookings.count == 0 %>
           <h4>Tiens, personne ne veut de vos sourires pour l'instant</h4>
           <hr>
-                          <!-- Vision numéro 2 -->
 
-          <!-- Faire deux colonnes -->
-          <div class="row" id="booking-status">
+          <div class="row">
              <%= render partial:'pages/shared/bookings_status', :locals => { pendingBookings: @pendingBookings, statuedBookings: @statuedBookings } %>
           </div>
         </div><!--/Réservation de mes offres-->
