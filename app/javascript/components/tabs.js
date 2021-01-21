@@ -7,7 +7,8 @@ const initTabs = () => {
         console.log('Hello')
         const activeTabs = document.querySelectorAll('.active')
         activeTabs.forEach((activeTab) => {
-          activeTab.classList.remove('active')
+          console.log('Hello2');
+          activeTab.classList.remove('active');
         });
       });
     });
