@@ -3,7 +3,11 @@
 
   <% pendingBookings.flatten.each do |book|%>
     <div class="card-product mb-4">
-      <img src="<%= book.offer.photo %>" />
+        <% if book.offer.photo.attached? %>
+          <%= cl_image_tag book.offer.photo.key %>
+        <% else %>
+          <img src="https://res.cloudinary.com/cb-dev/image/upload/v1611257793/buddiest/hey_utz1h9.png" alt="">
+        <% end %>
       <div class="card-product-infos">
         <h2><%= book.offer.title %></h2>
         <p><%= book.offer.description.first(40) %>...</p>
@@ -20,7 +24,11 @@
   <h4>Réservations validées :</h4>
   <% statuedBookings.flatten.each do |book|%>
     <div class="card-product mb-4">
-      <img src="<%= book.offer.photos %>" />
+        <% if book.offer.photo.attached? %>
+          <%= cl_image_tag book.offer.photo.key %>
+        <% else %>
+          <img src="https://res.cloudinary.com/cb-dev/image/upload/v1611257793/buddiest/hey_utz1h9.png" alt="">
+        <% end %>
       <div class="card-product-infos">
         <h2><%= book.offer.title %></h2>
         <p><%= book.offer.description.first(40) %>...</p>
