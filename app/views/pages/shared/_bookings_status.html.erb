@@ -1,0 +1,34 @@
+<div class="col"><!-- Colonne 1 : En attente -->
+  <h4>Réservations en attente :</h4>
+
+  <% pendingBookings.flatten.each do |book|%>
+    <div class="card-product mb-4">
+      <img src="<%= book.offer.photo %>" />
+      <div class="card-product-infos">
+        <h2><%= book.offer.title %></h2>
+        <p><%= book.offer.description.first(40) %>...</p>
+        <p id=""><strong><%= book.status %></strong></p>
+        <br/>
+        <%= link_to  "Valider", validate_path(book), method: :patch, class: "btn btn-primary", id: "update-booking", remote: true %>
+        <%= link_to  "Refuser", refused_path(book), class: "btn btn-success", method: :patch, remote: true  %>
+      </div>
+    </div>
+  <% end %>
+</div> <!-- fin de la colonne -->
+
+<div class="col"><!-- Colonne 2 : Colonne validée-->
+  <h4>Réservations validées :</h4>
+  <% statuedBookings.flatten.each do |book|%>
+    <div class="card-product mb-4">
+      <img src="<%= book.offer.photos %>" />
+      <div class="card-product-infos">
+        <h2><%= book.offer.title %></h2>
+        <p><%= book.offer.description.first(40) %>...</p>
+        <p><strong><%= book.status  %></strong></p>
+        <br/>
+        <%= link_to  "Voir l'offre", "/books/#{book.id}", class: "btn btn-primary" %>
+        <%= link_to  "Editer l'offre", "/books/#{book.id}/edit", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

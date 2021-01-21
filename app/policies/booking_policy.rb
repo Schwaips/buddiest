@@ -5,6 +5,18 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
+  def index
+    true
+  end
+
+  def validate? 
+    true
+  end
+
+  def refused?
+    true
+  end
+
   def show?
     true
   end
