@@ -10,6 +10,7 @@
         <% end %>
       <div class="card-product-infos">
         <h2><%= book.offer.title %></h2>
+        <p>Demandé par : <%= book.user.first_name %></p>
         <p><%= book.offer.description.first(40) %>...</p>
         <p id=""><strong><%= book.status %></strong></p>
         <br/>
@@ -31,6 +32,7 @@
         <% end %>
       <div class="card-product-infos">
         <h2><%= book.offer.title %></h2>
+        <p>Demandé par : <%= book.user.first_name %></p>
         <p><%= book.offer.description.first(40) %>...</p>
         <p><strong><%= book.status  %></strong></p>
         <br/>
