@@ -78,7 +78,11 @@
           <hr>
           <% current_user.offers.each do |offer|%>
             <div class="card-product mb-4">
-              <img src="<%= offer.photos %>" />
+                <% if offer.photo.attached? %>
+                      <%= cl_image_tag offer.photo.key %>
+                <% else %>
+                  <img src="https://res.cloudinary.com/cb-dev/image/upload/v1611257793/buddiest/hey_utz1h9.png" alt="">
+                <% end %>
               <div class="card-product-infos">
                 <h2><%= offer.title %></h2>
                 <p><%= offer.description %></p>
