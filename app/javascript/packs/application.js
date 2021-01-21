@@ -26,7 +26,7 @@ require("channels")
 import "bootstrap";
 
 // External flat pickr
-import { flatpickr } from "../plugins/flatpickr"
+import { initFlatpickr } from "../plugins/flatpickr";
 // select2
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
@@ -39,10 +39,9 @@ import { initMapbox } from '../plugins/init_mapbox';
 // import { fetchWithToken } from '../plugins/init_fetchWithToken';
 
 document.addEventListener('turbolinks:load', () => {
+  initFlatpickr();
   initUpdateNavbarOnScroll();
   initTabs();
   initMapbox();
-  flatpickr();
   // fetchWithToken();
-
-})
+});
