@@ -25,20 +25,23 @@ require("channels")
 // External imports
 import "bootstrap";
 
+// External flat pickr
+import { flatpickr } from "../plugins/flatpickr"
+// select2
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { initTabs } from '../components/tabs'
 
-
-// Internal imports, e.g:
+// mapbox for geolocalization:
 import { initMapbox } from '../plugins/init_mapbox';
+
+// security token for AJAX -- not needed now.
 // import { fetchWithToken } from '../plugins/init_fetchWithToken';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+  flatpickr();
   // fetchWithToken();
   initUpdateNavbarOnScroll();
   initTabs();
 })
-
-
