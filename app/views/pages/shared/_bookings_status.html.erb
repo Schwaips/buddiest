@@ -10,7 +10,7 @@
         <% end %>
       <div class="card-product-infos">
         <h2><%= book.offer.title %></h2>
-        <p>Demandé par : <%= book.user.first_name %></p>
+        <p>Demandé par : <strong> <%= book.user.first_name %></strong></p>
         <p><%= book.offer.description.first(40) %>...</p>
         <p id=""><strong><%= book.status %></strong></p>
         <br/>
@@ -22,7 +22,7 @@
 </div> <!-- fin de la colonne -->
 
 <div class="col"><!-- Colonne 2 : Colonne validée-->
-  <h4>Réservations validées :</h4>
+  <h4>Réservations validées/refusées:</h4>
   <% statuedBookings.flatten.each do |book|%>
     <div class="card-product mb-4">
         <% if book.offer.photo.attached? %>
@@ -32,12 +32,16 @@
         <% end %>
       <div class="card-product-infos">
         <h2><%= book.offer.title %></h2>
-        <p>Demandé par : <%= book.user.first_name %></p>
+        <p>Demandé par : <strong><%= book.user.first_name %> </strong></p>
         <p><%= book.offer.description.first(40) %>...</p>
-        <p><strong><%= book.status  %></strong></p>
+        <% if book.status == "Validé" %>
+          <p class="color-status-green"><strong><%= book.status %></strong></p>
+        <% else %>
+          <p class="color-status-purple"><strong><%= book.status %></strong></p>
+        <% end %>
         <br/>
-        <%= link_to  "Voir l'offre", "/books/#{book.id}", class: "btn btn-primary" %>
-        <%= link_to  "Editer l'offre", "/books/#{book.id}/edit", class: "btn btn-success" %>
+          <%= link_to  "Voir l'offre", "/books/#{book.id}", class: "btn btn-primary" %>
+          <%= link_to  "Editer l'offre", "/books/#{book.id}/edit", class: "btn btn-success" %>
       </div>
     </div>
   <% end %>

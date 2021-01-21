@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2021_01_21_185933) do
     t.datetime "date_end"
     t.integer "price_total"
     t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["offer_id"], name: "index_bookings_on_offer_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -55,6 +57,8 @@ ActiveRecord::Schema.define(version: 2021_01_21_185933) do
     t.string "title"
     t.string "description"
     t.string "photos"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_offers_on_user_id"

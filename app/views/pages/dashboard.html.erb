@@ -104,7 +104,14 @@
 
         <div class="tab-pane" id="books-booked"><!--/Réservation de mes offres-->
               <%# <% if @bookings.count == 0 %>
-          <h4>Tiens, personne ne veut de vos sourires pour l'instant</h4>
+              <br>
+
+              <% if @bookings.empty? %>
+                 <h4>Tiens, personne ne vous a réservé de compliments encore... essayez de faire de nouvelle proposition?</h4>
+                <%= link_to  "Proposer une nouvelle offre", new_offer_path, class: "btn btn-green" %>
+                 <% else %>
+                <h4>Gérer vos réservations</h4>
+              <% end %>
           <hr>
 
           <div class="row" id="booking-status">
@@ -114,6 +121,7 @@
 
         <div class="tab-pane" id="history"><!--/historique de mes résa-->
               <%# <% if @bookings.count == 0 %>
+              <br>
           <h4>Vos derniers cours réservés</h4>
           <hr>
           <%= render partial:'pages/shared/history', :locals => { user: @user } %>
