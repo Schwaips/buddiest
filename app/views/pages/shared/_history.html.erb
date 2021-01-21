@@ -10,8 +10,7 @@
     <div class="card-product-infos">
       <h2><%= booking.offer.title %></h2>
       <p> <%= booking.offer.price_per_hour%>€ par heure </p>
-      <p><strong> Prix total à payer <%= booking.total_price.to_f %></strong></p>
-
+      <p><strong> Prix total à payer <%= booking.total_price.to_f %> <i class="fas fa-euro-sign"></i> </strong></p>
       <% if booking.status == "Validé" %>
         <p class="color-status-green"> <%= booking.status %> !</p>
         <%= link_to  "Payer", "/", class: "btn btn-green" %>
