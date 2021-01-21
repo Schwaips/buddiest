@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
     @booking.offer = @offer
     @booking.user = current_user
     @booking.status = "En attente"
+
     authorize @booking
       if @booking.save
         redirect_to offer_path(@offer)
