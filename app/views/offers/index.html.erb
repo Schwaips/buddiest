@@ -29,22 +29,24 @@
       <% else %>
         <div class="row">
           <% @offers.each do |offer| %>
-            <div class="col-3 mb-5">
-              <%= link_to offer_path(offer) do %>
-                <div class="cards">
-                  <% if offer.photo.attached? %>
-                    <%= cl_image_tag offer.photo.key, class: "card-img-top" %>
-                  <% else %>
-                    <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="">
-                  <% end %>
-                  <div class="card-description d-flex flex-column justify-content-between ">
-                    <h4><%= offer.title  %></h4>
-                    <p><%= offer.description.first(40)...%></p>
-                    <span> <%= offer.price_per_hour %> € / heure</span>
+            <% unless offer.user == current_user %>
+              <div class="col-3 mb-5">
+                <%= link_to offer_path(offer) do %>
+                  <div class="cards">
+                    <% if offer.photo.attached? %>
+                      <%= cl_image_tag offer.photo.key, class: "card-img-top" %>
+                    <% else %>
+                      <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="">
+                    <% end %>
+                    <div class="card-description d-flex flex-column justify-content-between ">
+                      <h4><%= offer.title  %></h4>
+                      <p><%= offer.description.first(40)...%></p>
+                      <span> <%= offer.price_per_hour %> € / heure</span>
+                    </div>
                   </div>
-                </div>
-              <% end %>
-            </div>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>

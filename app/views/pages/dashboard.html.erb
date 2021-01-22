@@ -51,7 +51,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Historique de mon activité</div>
         <div class="panel-body">
-        	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+        	<p>Dernière offre créée le: </p><%= @offers.last.created_at.to_date %>
         </div>
       </div>
 
@@ -85,7 +85,7 @@
                 <% end %>
               <div class="card-product-infos">
                 <h2><%= offer.title %></h2>
-                <p><%= offer.description %></p>
+                <p><%= offer.description.first(150)... %></p>
                 <br/>
                 <%= link_to  "Voir l'offre", "/offers/#{offer.id}", class: "btn btn-primary" %>
                 <%= link_to  "Editer l'offre", "/offers/#{offer.id}/edit", class: "btn btn-success" %>
