@@ -35,19 +35,23 @@
     <div>
       <div class="offer-card">
         <h2><%= @offer.title %></h2>
-        <p> <i class="fas fa-euro-sign"></i> <%= @offer.price_per_hour %>€/h</p>
+        <p id="offer-price"> <i class="fas fa-euro-sign"></i> <%= @offer.price_per_hour %>€/h</p>
         <p class="mt-5"><%= @offer.description %></p>
       </div>
     </div>
 
     <div>
-      <div class="form-group form-wrapper booking-card">
+      <div class="form-group form-wrapper booking-card" data-controller="counter">
         <h5 class="mb-4"><strong>Vous êtes interessé ?</strong></h5>
         <h6>Reservez dès maintenant</h6>
         <%= simple_form_for [@offer, @booking] do |f| %>
-          <%= f.input :date_begin, as: :string, label: "Date de début", input_html: {class: "datepicker"}  %>
-          <%= f.input :date_end, as: :string, label: "Date de fin", input_html: {class: "datepicker"} %>
-          <%= f.submit "Réserver ce cours", class: "btn btn-success btn-block" %>
+          <%= f.input :date_begin, as: :string, label: "Date de début", input_html: {class: "datepicker", data: {action: "change->counter#updatePrice"}}  %>
+          <%= f.input :date_end, as: :string, label: "Date de fin", input_html: {class: "datepicker", data: {action: "change->counter#updatePrice"}} %>
+          <br>
+          <span data-target="counter.price">Sélectionnez des dates pour connaitre le prix</span>
+          <%= f.submit "Réserver ce cours", class: "btn btn-success btn-block mt-3" %>
+          <br>
+
         <% end %>
 
       </div>
