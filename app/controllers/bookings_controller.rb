@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
 
     authorize @booking
       if @booking.save
-        flash[notice] = { text: "Votre réservation a été prise en compte. Elle doit maintenant être validé." }
+        flash[:notice] = "Votre réservation a été prise en compte. Elle doit maintenant être validée."
         redirect_to dashboard_path
       else
         render :new
@@ -69,7 +69,7 @@ class BookingsController < ApplicationController
     @bookings.flatten!
 
     @pendingBookings = @bookings.select do |booking|
-    booking.status == "En attente"
+     booking.status == "En attente"
     end
 
     @statuedBookings = @bookings.select do |booking|

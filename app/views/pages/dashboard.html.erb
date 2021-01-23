@@ -59,10 +59,8 @@
             <%= link_to  "#{@offers.last.title}", "/offers/#{@offers.last.id}" %>
         <% end %>
 
-
         </div>
       </div>
-
     </div><!--/col-3-->
 
     <div class="col-sm-9">
@@ -85,10 +83,11 @@
         <div class="tab-pane active" id="offers">
           <hr>
           <h4>Retrouvez ici l'intégralité de vos offres</h4>
+
           <% current_user.offers.each do |offer|%>
             <div class="card-product mb-4">
                 <% if offer.photo.attached? %>
-                      <%= cl_image_tag offer.photo.key %>
+                  <%= cl_image_tag offer.photo.key %>
                 <% else %>
                   <img src="https://res.cloudinary.com/cb-dev/image/upload/v1611257793/buddiest/hey_utz1h9.png" alt="">
                 <% end %>
@@ -106,38 +105,37 @@
         <div class="tab-pane" id="profile">
           <br>
           <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
-            <hr>
-            <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
-            <hr>
+          <hr>
+          <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
+          <hr>
         </div><!--/tab-profile-->
 
-
         <div class="tab-pane" id="books-booked"><!--/Réservation de mes offres-->
-              <%# <% if @bookings.count == 0 %>
-              <br>
-              <% if @bookings.empty? %>
-                 <h4>Tiens, personne ne vous a réservé de compliments encore... essayez de faire de nouvelle proposition?</h4>
-                <%= link_to  "Proposer une nouvelle offre", new_offer_path, class: "btn btn-green" %>
-                 <% else %>
-                <h4>Gérer vos réservations</h4>
-              <% end %>
+          <br>
+          <% if @bookings.empty? %>
+            <h4>Tiens, personne ne vous a réservé de compliments encore... essayez de faire de nouvelle proposition?</h4>
+            <%= link_to  "Proposer une nouvelle offre", new_offer_path, class: "btn btn-green" %>
+          <% else %>
+            <h4>Gérer vos réservations</h4>
+          <% end %>
           <hr>
-
           <div class="row" id="booking-status">
-             <%= render partial:'pages/shared/bookings_status', :locals => { pendingBookings: @pendingBookings, statuedBookings: @statuedBookings } %>
+            <%= render partial:'pages/shared/bookings_status', :locals => { pendingBookings: @pendingBookings, statuedBookings: @statuedBookings } %>
           </div>
         </div><!--/Réservation de mes offres-->
 
         <div class="tab-pane" id="history"><!--/historique de mes résa-->
-              <%# <% if @bookings.count == 0 %>
-              <br>
+          <br>
           <h4>Vos derniers cours réservés</h4>
           <hr>
-          <%= render partial:'pages/shared/history', :locals => { user: @user } %>
+          <% if @bookings.empty? %>
+            <p>Vous n'avez aucune réservation.</p>
+          <% else %>
+            <%= render partial:'pages/shared/history', :locals => { user: @user } %>
+          <% end %>
         </div><!--/tab-pane-->
 
       </div><!--/tab-content-->
-
     </div><!--/col-9-->
   </div><!--/row-->
 </div>

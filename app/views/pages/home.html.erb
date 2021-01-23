@@ -3,9 +3,9 @@
     <div class="homebanner">
       <div class="d-flex flex-column justify-content-center align-items-center homebanner py-5 mb-5">
       <h1 class="masthead-heading mb-0">Buddiest, l'application qui vous redonne le sourire.</h1>
-      <h2 class="masthead-subheading mb-0">Partagez un moment d'humanité</h2>
+      <h3 class="masthead-subheading mb-0">Partagez un moment d'humanité</h3>
 
-    <div class="search-bar">
+    <div class="search-bar mt-5">
       <form action="/offers">
         <div class="form-group d-flex align-items-center">
           <%# <input id=“search” class=“form-control search-control” name=“query” placeholder=“Chercher une offre” method=“GET”> %>
@@ -35,11 +35,8 @@
         <div class="p-5">
           <h2 class="display-4">Offrez vous l'éloge que vous méritez</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-          <% if user_signed_in? %>
-            <%= link_to  "Voir les offres", offers_path, class: "btn btn-primary btn-xl rounded-pill mt-5" %>
-          <% else %>
-            <%= link_to  "S'inscrire", new_user_registration_path , class: "btn btn-primary btn-xl rounded-pill mt-5" %>
-          <% end %>
+
+            <%= link_to  "Voir les offres", offers_path, class: "btn btn-success btn-xl rounded-pill mt-5 p-3" %>
         </div>
       </div>
     </div>
@@ -59,9 +56,9 @@
           <h2 class="display-4">Partager votre bonne humeur n'a jamais été aussi simple</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
           <% if user_signed_in? %>
-            <%= link_to "Voir les offres", offers_path, class: "btn btn-primary btn-xl rounded-pill mt-5"  %>
+            <%= link_to "Voir les offres", offers_path, class: "btn btn-success btn-xl rounded-pill mt-5 p-3"  %>
           <% else %>
-            <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary btn-xl rounded-pill mt-5"  %>
+            <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-success btn-xl rounded-pill mt-5 p-3"  %>
           <% end %>
         </div>
       </div>
@@ -79,12 +76,12 @@
       </div>
       <div class="col-lg-6 order-lg-1">
         <div class="p-5">
-          <h2 class="display-4">Devenez le buddiest dont vous révez</h2>
+          <h2 class="display-4">Devenez le buddiest dont vous rêvez</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
           <% if user_signed_in? %>
-           <%= link_to 'Voir les offres', offers_path, class: "btn btn-primary btn-xl rounded-pill mt-5"  %>
+            <%= link_to 'Voir les offres', offers_path, class: "btn btn-success btn-xl rounded-pill mt-5 p-3"  %>
           <% else %>
-            <%= link_to 'Sinscrire', new_user_registration_path, class: "btn btn-primary btn-xl rounded-pill mt-5"  %>
+            <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-success btn-xl rounded-pill mt-5 p-3"  %>
           <% end %>
         </div>
       </div>

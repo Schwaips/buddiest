@@ -30,6 +30,7 @@ class OffersController < ApplicationController
     @offer.user = current_user
     authorize @offer
     if @offer.save
+      flash[:notice] = "L'offre #{@offer.title} est maintenant publiée, merci"
       redirect_to offers_path(@offer)
     else
       render :new
@@ -58,13 +59,14 @@ class OffersController < ApplicationController
     authorize @offer
     @offer.update(params_offer)
     redirect_to dashboard_path
-    flash[notice] = { text: "L'offre #{@offer.title} est à jour, merci" }
+    flash[:notice] = "L'offre #{@offer.title} est à jour, merci"
   end
 
   def destroy
     @offer = Offer.find(params[:id])
     @offer.destroy
     if authorize @offer
+      flash[:notice] = "L'offre #{@offer.title} bien supprimée, merci"
       redirect_to offers_path
     else
       render :show
