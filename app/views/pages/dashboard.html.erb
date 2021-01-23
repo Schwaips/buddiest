@@ -51,7 +51,15 @@
       <div class="panel panel-default">
         <div class="panel-heading">Historique de mon activité</div>
         <div class="panel-body">
-        	<p>Dernière offre créée le: </p><%= @offers.last.created_at.to_date %>
+
+        <% if @offers.empty? %>
+           <p>Aucune offre. C'est peut être le moment de proposer vos services!</p>
+        <% else %>
+            <p>Dernière offre: </p>
+            <%= link_to  "#{@offers.last.title}", "/offers/#{@offers.last.id}" %>
+        <% end %>
+
+
         </div>
       </div>
 
