@@ -84,6 +84,7 @@
       <div class="tab-content">
         <div class="tab-pane active" id="offers">
           <hr>
+          <h4>Retrouvez ici l'intégralité de vos offres</h4>
           <% current_user.offers.each do |offer|%>
             <div class="card-product mb-4">
                 <% if offer.photo.attached? %>
@@ -103,6 +104,7 @@
         </div> <!-- tab mes offres -->
 
         <div class="tab-pane" id="profile">
+          <br>
           <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
             <hr>
             <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
