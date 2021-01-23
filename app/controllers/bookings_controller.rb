@@ -69,7 +69,7 @@ class BookingsController < ApplicationController
     @bookings.flatten!
 
     @pendingBookings = @bookings.select do |booking|
-    booking.status == "En attente"
+     booking.status == "En attente"
     end
 
     @statuedBookings = @bookings.select do |booking|
