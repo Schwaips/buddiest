@@ -36,7 +36,7 @@
                     <% if offer.photo.attached? %>
                       <%= cl_image_tag offer.photo.key, class: "card-img-top" %>
                     <% else %>
-                      <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="">
+                      <img class="card-img-top" src="<%= offer.photos %>" alt="">
                     <% end %>
                     <div class="card-description d-flex flex-column justify-content-between ">
                       <h4><%= offer.title  %></h4>
