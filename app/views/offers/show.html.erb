@@ -38,7 +38,7 @@
         <i class="fas fa-location-arrow"></i> <span>J'accepte de me déplacer à <%= @offer.area %> km</span>
         <br>
         <br>
-        <%= link_to  "Retour à la liste des offres", offers_path, class:"btn btn-primary" %>
+        <%= link_to  "Retour à la liste des offres", offers_path, class:"btn btn-green" %>
       </div>
     </div>
 
@@ -51,7 +51,7 @@
           <%= f.input :date_end, as: :string, label: "Date de fin", input_html: {class: "datepicker", data: {action: "change->counter#updatePrice"}} %>
           <br>
           <span data-target="counter.price">Sélectionnez des dates pour connaitre le prix</span>
-          <%= f.submit "Réserver ce cours", class: "btn btn-success btn-block mt-3" %>
+          <%= f.submit "Réserver ce cours", class: "btn btn-red btn-block mt-3" %>
           <br>
         <% end %>
       </div>
