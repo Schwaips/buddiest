@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:dashboard]
+  skip_before_action :authenticate_user!, only: [:dashboard, :home]
 
+  def home
+  end
 
   def dashboard
     # offre que l'utilisteur a créé
