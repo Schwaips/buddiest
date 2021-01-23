@@ -76,12 +76,12 @@
       </div>
       <div class="col-lg-6 order-lg-1">
         <div class="p-5">
-          <h2 class="display-4">Devenez le buddiest dont vous révez</h2>
+          <h2 class="display-4">Devenez le buddiest dont vous rêvez</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
           <% if user_signed_in? %>
-           <%= link_to 'Voir les offres', offers_path, class: "btn btn-sucess btn-xl rounded-pill mt-5 p-3"  %>
+            <%= link_to 'Voir les offres', offers_path, class: "btn btn-success btn-xl rounded-pill mt-5 p-3"  %>
           <% else %>
-            <%= link_to 'Sinscrire', new_user_registration_path, class: "btn btn-success btn-xl rounded-pill mt-5 p-3"  %>
+            <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-success btn-xl rounded-pill mt-5 p-3"  %>
           <% end %>
         </div>
       </div>
