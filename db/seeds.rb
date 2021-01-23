@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+
 puts "---creating users"
 
   raph = User.new(email: "raphael.mosca@gmail.com", password: "123456", first_name: "Raphael", last_name: "Mosca", address:"rue batman 40000 angers", nationality: "French")
@@ -21,18 +22,36 @@ puts "---creating users"
   amelien.save!
   puts "Amélien created"
 
+  charlie = User.new(email: "charlie.bertrand@mt.com", password:"123456", first_name: "Charlie", last_name: "Bertrand", address: "79 boulevard Vincent Auriol 75013 Paris", nationality: "French")
+  charlie.save!
+
 puts "end of user creation"
 
 
 puts "---starting seeding offers---"
-10.times do
- user = User.all.sample
- user_id = User.all.sample.id
- price = [25, 46, 100, 10].sample
- area = [5, 10, 15, 20, 100].sample
-  offer = Offer.new(title: Faker::Educator.course_name, description: Faker::Educator.subject, price_per_hour: price, area: area, user_id: user_id, address: Faker::Address.street_address)
-  offer.save!
-  puts "saving #{offer.title}"
-end
-puts "---end of seeding offers"
 
+  offer1 = Offer.new(:user_id => 1, :address => '159 boulevard Jean Jaurès Clichy', :area => 5, :price_per_hour => 7, :title => "Câlins", :description => "Pas le moral ce matin ? Je passe vous faire un câlin et je vous apporte le café ", :photos => "https://source.unsplash.com/1600x900/?coffee,happiness")
+  offer1.save!
+  puts "Creating offer 1"
+
+  offer2 = Offer.new(:user_id => 2, :address => '159 rue Anatole France Levallois', :area => 3, :price_per_hour => 15, :title => "Cookies et écoute", :description => "Je propose de vous ramener des cookies et d'écouter vos problèmes", :photos => "https://source.unsplash.com/1600x900/?joy,food")
+  offer2.save!
+  puts "Creating offer 2"
+
+  offer3 = Offer.new(:user_id => 3, :address => '10 rue Lavoisier 75008 Paris', :area => 2, :price_per_hour => 5, :title => "Présence", :description => "Vous ne voulez pas être seul ? Je viens et je vous tiens compagnie.", :photos => "https://source.unsplash.com/1600x900/?lonely,warm")
+  offer3.save!
+  puts "Creating offer 3"
+
+  offer4 = Offer.new(:user_id => 1, :address => '10 rue Daru 75008 Paris', :area => 10, :price_per_hour => 12, :title => "Buvons un verre", :description => "Dure journée, hein ? Je suis là pour vous écouter autour d'un verre", :photos => "https://source.unsplash.com/1600x900/?wine,date")
+  offer4.save!
+  puts "Creating offer 4"
+
+  offer5 = Offer.new(:user_id => 2, :address => '13 rue Guillaume Tell 75017 Paris', :area => 1, :price_per_hour => 11, :title => "Dispo par téléphone", :description => "Vous pouvez m'appeler pour vous énerver si vous en avez besoin", :photos => "https://source.unsplash.com/1600x900/?phone,angry")
+  offer5.save!
+  puts "Creating offer 5"
+
+  offer6 = Offer.new(:user_id => 3, :address => '99 rue de la Faisanderie 75016 Paris', :area => 7, :price_per_hour => 8, :title => "Parlons :) !", :description => "Hey ! On peut se retrouver et discuter ! J'aime les chats et les animaux en général", :photos => "https://source.unsplash.com/1600x900/?discuss,sofa")
+  offer6.save!
+  puts "Creating offer 6"
+
+puts "---end of seeding offers"

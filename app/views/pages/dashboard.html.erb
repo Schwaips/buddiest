@@ -51,7 +51,15 @@
       <div class="panel panel-default">
         <div class="panel-heading">Historique de mon activité</div>
         <div class="panel-body">
-        	<p>Dernière offre créée le: </p><%= @offers.last.created_at.to_date %>
+
+        <% if @offers.empty? %>
+           <p>Aucune offre. C'est peut être le moment de proposer vos services!</p>
+        <% else %>
+            <p>Dernière offre: </p>
+            <%= link_to  "#{@offers.last.title}", "/offers/#{@offers.last.id}" %>
+        <% end %>
+
+
         </div>
       </div>
 
@@ -76,6 +84,7 @@
       <div class="tab-content">
         <div class="tab-pane active" id="offers">
           <hr>
+          <h4>Retrouvez ici l'intégralité de vos offres</h4>
           <% current_user.offers.each do |offer|%>
             <div class="card-product mb-4">
                 <% if offer.photo.attached? %>
@@ -95,6 +104,7 @@
         </div> <!-- tab mes offres -->
 
         <div class="tab-pane" id="profile">
+          <br>
           <h4>Vous pouvez éditer votre profil ici, même s'il est déjà super</h4>
             <hr>
             <%= render partial:'pages/shared/edit-profile', :locals => { user: @user } %>
@@ -105,7 +115,6 @@
         <div class="tab-pane" id="books-booked"><!--/Réservation de mes offres-->
               <%# <% if @bookings.count == 0 %>
               <br>
-
               <% if @bookings.empty? %>
                  <h4>Tiens, personne ne vous a réservé de compliments encore... essayez de faire de nouvelle proposition?</h4>
                 <%= link_to  "Proposer une nouvelle offre", new_offer_path, class: "btn btn-green" %>
