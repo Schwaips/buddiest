@@ -19,46 +19,49 @@
 
 
   <!-- Page Content -->
-  <div class="container">
+  <!-- <div class="container"> -->
     <h3 class="mb-5">Voici quelques offres pour vous donner le sourire ...</h3>
-    <div>
-      <% if @offers.empty? %>
-        <h2>Désolé, nous n'avons rien trouvé.</h2>
-        <p>Voici un sourire à la place</p>
-        <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610904406/buddiest/smile-icon.png" alt="">
-      <% else %>
-        <div class="row">
-          <% @offers.each do |offer| %>
-            <% unless offer.user == current_user %>
-              <div class="col-3 mb-5">
-                <%= link_to offer_path(offer) do %>
-                  <div class="cards">
-                    <% if offer.photo.attached? %>
-                      <%= cl_image_tag offer.photo.key, class: "card-img-top" %>
-                    <% else %>
-                      <img class="card-img-top" src="<%= offer.photos %>" alt="">
-                    <% end %>
-                    <div class="card-description d-flex flex-column justify-content-between ">
-                      <h4><%= offer.title.first(20) %>...</h4>
-                      <p><%= offer.description.first(40)...%></p>
-                      <span> <%= offer.price_per_hour %> € / heure</span>
+    <div class="content-offer d-flex">
+
+
+      <div class="cards-offer">
+
+        <% if @offers.empty? %>
+          <h2>Désolé, nous n'avons rien trouvé.</h2>
+          <p>Voici un sourire à la place</p>
+          <img src="https://res.cloudinary.com/cb-dev/image/upload/v1610904406/buddiest/smile-icon.png" alt="">
+        <% else %>
+          <div class="cards ml-3 mr-3">
+            <% @offers.each do |offer| %>
+              <% unless offer.user == current_user %>
+                  <%= link_to offer_path(offer) do %>
+                    <div class="card-product">
+                      <% if offer.photo.attached? %>
+                        <%= cl_image_tag offer.photo.key, class: "card-img-top" %>
+                      <% else %>
+                        <img class="card-img-top" src="<%= offer.photos %>" alt="">
+                      <% end %>
+                      <div class="card-description d-flex flex-column justify-content-between ">
+                        <h4><%= offer.title  %></h4>
+                        <p><%= offer.description.first(40)...%></p>
+                        <span> <%= offer.price_per_hour %> € / heure</span>
+                      </div>
                     </div>
-                  </div>
-                <% end %>
-              </div>
+                  <% end %>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+          </div>
+        <% end %>
+      </div>
 
-    <div id="map"
-        style="width: 100%;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      <div id="map"
+          class="col-4"
+          style="width: 100%;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
-
-  </div>
+  <!-- </div> -->
 
 
 
