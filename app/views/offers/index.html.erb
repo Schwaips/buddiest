@@ -42,8 +42,9 @@
                         <img class="card-img-top" src="<%= offer.photos %>" alt="">
                       <% end %>
                       <div class="card-description d-flex flex-column justify-content-between ">
-                        <h4><%= offer.title  %></h4>
+                        <h4><%= offer.title.first(20)...  %></h4>
                         <p><%= offer.description.first(40)...%></p>
+                        <p><strong>Proposé par : <%= offer.user.first_name %></strong></p>
                         <span> <%= offer.price_per_hour %> € / heure</span>
                       </div>
                     </div>
