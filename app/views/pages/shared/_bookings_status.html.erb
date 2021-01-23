@@ -1,6 +1,9 @@
 <div class="col"><!-- Colonne 1 : En attente -->
   <h4>Réservations en attente :</h4>
 
+<% if pendingBookings.empty? %>
+  <p>Rien pour le moment..</p>
+<% else %>
   <% pendingBookings.flatten.each do |book|%>
     <div class="card-product mb-4">
         <% if book.offer.photo.attached? %>
@@ -43,3 +46,4 @@
     </div>
   <% end %>
 </div>
+<% end %>
