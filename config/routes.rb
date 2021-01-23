@@ -12,15 +12,17 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:show]
 
-  get '/dashboard', to: "pages#dashboard"
   #delete offer
   delete 'offers/:id' => 'offers#destroy', as: :destroy
 
- # history routes for pages historique.
-  get '/history', to: "pages#history"
+  # bookings show @  update
+  resources :bookings, only: [:show]
+  patch 'bookings/:id/validate', to: "bookings#validate", as: :validate
+  patch 'bookings/:id/refused', to: "bookings#refused", as: :refused
 
+  #dashboard route
+  get '/dashboard', to: "pages#dashboard"
 
   # route for profile path
   resource :profile, only: [:update]

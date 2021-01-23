@@ -1,0 +1,3 @@
+console.log("coucou");
+<%# $('#booking-status').html("<%= escape_javascript render(:partial => 'pages/shared/bookings_status', :locals => { :pendingBookings => @pendingBookings, :statuedBookings => @statuedBookings }) %>
+document.getElementById("booking-status").innerHTML = "<%= escape_javascript render(:partial => 'pages/shared/bookings_status', :locals => { :pendingBookings => @pendingBookings, :statuedBookings => @statuedBookings }) %>";

@@ -8,6 +8,9 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import 'mapbox-gl/dist/mapbox-gl';
+@import "flatpickr/dist/flatpickr";
+@import "flatpickr/dist/themes/material_green";
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
@@ -15,3 +18,9 @@
 .body {
   margin-top: 66px;
 }
+
+//avoid floating footer
+.main {
+  min-height: calc(100vh - 60px); // if your footer height is 60px
+}
+

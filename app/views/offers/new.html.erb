@@ -1,20 +1,37 @@
-<div class="offset-3 col-8">
-  <br/>
-  <h3>Create a new offer</h3>
 
-
-  <div class="form-group">
-    <%= simple_form_for(@offer) do |f| %>
-                  <%= f.input :title, label: "Titre offre" %>
-                  <%= f.input :description, label: "Description" %>
-                  <%= f.input :area, label: "Zone de déplacement" %>
-                  <%= f.input :address, label: "Adresse" %>
-                  <%= f.input :price_per_hour, label: "Prix par heure" %>
-                  <%= f.input :photo, as: :file %>
-                  <%= f.submit "Create offer", class: "btn btn-dark" %>
-
-                <% end %>
+<div class="pt-5 text-center">
+        <h2>Donnez du bonheur à tous vos voisins</h2>
+        <p class="lead">Proposez vos services afin de complimenter tous les gens autour de chez vous</p>
+        <%# <img class="d-block mx-auto mb-4" src="https://res.cloudinary.com/cb-dev/image/upload/v1610904406/buddiest/smile-icon.png" alt="" width="72" height="72"> %>
   </div>
-  <%= link_to  "Back to the list", offers_path %>
-</div>
 
+
+  <div class="row no-gutter">
+      <!-- The image half -->
+    <div class="col-md-6 d-none d-md-flex">
+      <%= image_tag "offer.png", width: 900  %>
+    </div>
+      <!-- The content half -->
+    <div class="col-md-6">
+      <div class="login d-flex align-items-center py-5">
+      <!-- Demo content-->
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-11 col-xl-10 mx-auto">
+              <div class="form-group">
+                <%= simple_form_for(@offer) do |f| %>
+                <%= f.input :title, label: "Titre de votre offre", placeholder: "Des compliments à foison", input_html: { class: "offer-bar" } %>
+                <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" } %>
+                <%= f.input :area, label: "Zone de déplacement (en km)", placeholder: "50", input_html: { class: "offer-bar" } %>
+                <%= f.input :address, label: "Addresse de l'offre", placeholder: "12 Rue des gens heureux 49000 HappyCity", input_html: { class: "offer-bar" } %>
+                <%= f.input :price_per_hour, label: "Prix par heure", input_html: { class: "offer-bar" }, placeholder: "7" %>
+                <%= f.input :photo, as: :file, label: "Votre belle photo" %>
+                <%= f.submit "Créer votre offre !", class: "btn btn-green mt-4" %>
+                <% end %>
+              </div> <!-- fin form simple form -->
+            </div> <!-- fin col lg 10 col xl 7 -->
+          </div> <!-- fin row-->
+        </div><!-- fin container -->
+      </div> <!-- fin div login -->
+    </div><!-- fin col md 6 bg light -->
+<!-- fin container fluid -->
