@@ -1,10 +1,88 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<header class="masthead text-center text-white">
+  <div class="masthead-content">
+    <div class="homebanner">
+      <h1 class="masthead-heading mb-0">Buddiest, l'application qui vous redonne le sourire.</h1>
+      <h2 class="masthead-subheading mb-0">Partagez un moment d'humanité</h2>
+      <% if user_signed_in? %>
+      toto
+      <%#= link_to "Accéder aux offres", offers_path, class: "btn btn-primary btn-xl rounded-pill mt-5" %>
+      <% else %>
+      toto
+      <%#= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary btn-xl rounded-pill mt-5" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+  <div class="bg-circle-4 bg-circle"></div>
+</header>
 
-<div class="homebanner">
-  <h1>Buddiest</h1>
-</div>
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="https://previews.123rf.com/images/ozzichka/ozzichka1704/ozzichka170400028/76178922-toile-artistique-dans-le-carr%C3%A9-fond-carr%C3%A9-avec-aquarelle-peinte-%C3%A0-la-main-avec-des-peintures-color%C3%A9es-peinte.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <h2 class="display-4">Offrez vous l'éloge que vous méritez</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+          <% if user_signed_in? %>
+            <%= link_to  "Voir les offres", offers_path, class: "btn btn-primary btn-xl rounded-pill mt-5" %>
+          <% else %>
+            <%= link_to  "S'inscrire", new_user_registration_path , class: "btn btn-primary btn-xl rounded-pill mt-5" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>Apprenez où vous voulez - Développez vos compétences à 5 minutes de chez vous.</p>
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="https://www.carrecurieux.be/cameraslide/images/slides/livre2.jpg?1607472000027" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="p-5">
+          <h2 class="display-4">Partager votre bonne humeur n'a jamais été aussi simple</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+          <% if user_signed_in? %>
+            <%= link_to "Voir les offres", offers_path, class: "btn btn-primary btn-xl rounded-pill mt-5"  %>
+          <% else %>
+            <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary btn-xl rounded-pill mt-5"  %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>Montrez vos talents où que vous soyez. Partagez votre savoir.</p>
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="https://cdn.vox-cdn.com/thumbor/qVjMPtyFVT5Dtwl_jSOCj4Y33TM=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/15980837/elon_musk_tesla_3036.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+          <h2 class="display-4">Devenez le buddiest dont vous révez</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+          <% if user_signed_in? %>
+           <%= link_to 'Voir les offres', offers_path, class: "btn btn-primary btn-xl rounded-pill mt-5"  %>
+          <% else %>
+            <%= link_to 'Sinscrire', new_user_registration_path, class: "btn btn-primary btn-xl rounded-pill mt-5"  %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
