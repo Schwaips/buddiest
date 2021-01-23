@@ -18,3 +18,9 @@
 .body {
   margin-top: 66px;
 }
+
+//avoid floating footer
+.main {
+  min-height: calc(100vh - 60px); // if your footer height is 60px
+}
+

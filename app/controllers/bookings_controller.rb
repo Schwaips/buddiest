@@ -20,6 +20,7 @@ class BookingsController < ApplicationController
 
     authorize @booking
       if @booking.save
+        flash[notice] = { text: "Votre réservation a été prise en compte. Elle doit maintenant être validé." }
         redirect_to dashboard_path
       else
         render :new
