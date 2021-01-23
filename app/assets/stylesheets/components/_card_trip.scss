@@ -1,6 +1,6 @@
 
-.card > img {
-  height: 200px;
+.card-img {
+  height: 140px;
   width: 100%;
   object-fit: cover;
 }
@@ -8,9 +8,9 @@
 
 .cards {
   background: white;                         /* White background */
-  border-radius: 4px;                        /* Small radius */
+  border-radius: 8px;                        /* Small radius */
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
-  height: 347px;
+  height: 316px;
 }
 
 .cards:hover{
@@ -18,7 +18,7 @@
 }
 
 .card-description{
-  padding: 30px;
+  padding: 20px;
 }
 
 .card-description p{
