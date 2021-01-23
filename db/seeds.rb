@@ -73,10 +73,23 @@ puts "---end of seeding offers"
 
 puts "-- creating bookings"
 
+puts "--booking for Olivia---"
+Booking.create(user: raph, offer: offer2, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: charlie, offer: offer2, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
 
-Booking.create(user: raph, offer: offer2, date_begin: Time.current, date_end: Time.current + 1.hour)
-Booking.create(user: olivia, offer: offer1, date_begin: Time.current, date_end: Time.current + 1.hour)
-Booking.create(user: charlie, offer: offer1, date_begin: Time.current, date_end: Time.current + 1.hour)
+puts "--booking for raph"
+Booking.create(user: olivia, offer: offer1, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: charlie, offer: offer1, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+
+puts "--booking for charlie--"
+Booking.create(user: raph, offer: offer6, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: olivia, offer: offer6, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: amelien, offer: offer5, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+
+puts "--booking for amelien--"
+Booking.create(user: olivia, offer: offer3, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: charlie, offer: offer7, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: raph, offer: offer3, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
 
 puts "---end seeding---"
 
