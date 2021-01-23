@@ -1,7 +1,7 @@
 <div class="col"><!-- Colonne 1 : En attente -->
   <h4>Réservations en attente :</h4>
 
-<% if pendingBookings.empty? %>
+<% if pendingBookings.empty? && statuedBookings.empty? %>
   <p>Rien pour le moment... </p>
 <% else %>
   <% pendingBookings.flatten.each do |book|%>
