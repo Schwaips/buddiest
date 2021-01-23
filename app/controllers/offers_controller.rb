@@ -8,7 +8,8 @@ class OffersController < ApplicationController
     @markers = @offers.geocoded.map do |offer|
       {
         lat: offer.latitude,
-        lng: offer.longitude
+        lng: offer.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { offer: offer })
       }
     end
     # moteur de recherche
@@ -40,14 +41,13 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
     @booking = Booking.new
 
-    @markers = {
-        lat: @offer.latitude,
-        lng: @offer.longitude
-      }
+    @markers = [{
+      lat: @offer.latitude,
+      lng: @offer.longitude,
+      infoWindow: render_to_string(partial: "info_window", locals: { offer: @offer })
+    }]
     authorize @offer
-
   end
-
 
   def edit
     @offer = Offer.find(params[:id])
