@@ -1,22 +1,24 @@
 
 <% @user.bookings.each do |booking| %>
   <div class="card-product mb-4">
-      <% if booking.offer.photo.attached? %>
-          <%= cl_image_tag booking.offer.photo.key %>
-        <% else %>
-          <img src="https://res.cloudinary.com/cb-dev/image/upload/v1611257793/buddiest/hey_utz1h9.png" alt="">
-        <% end %>
+    <% if booking.offer.photo.attached? %>
+        <%= cl_image_tag booking.offer.photo.key %>
+    <% else %>
+        <img src="https://res.cloudinary.com/cb-dev/image/upload/v1611257793/buddiest/hey_utz1h9.png" alt="">
+    <% end %>
+
     <div class="card-product-infos">
       <h2><%= booking.offer.title %></h2>
       <p> <%= booking.offer.price_per_hour%>€ par heure </p>
+
       <% if booking.status == "Validé" %>
         <p class="color-status-green"><strong> <%= booking.status %> !</strong></p>
         <%= link_to  "Payer", "/", class: "btn btn-green" %>
       <% elsif booking.status == "Refusé" %>
         <p class="color-status-purple">Désolé, <%= booking.offer.user.first_name %> a refusé la demande de réservation :( </p>
-        <% else %>
-          <p class="color-status-blue"><strong> <%= booking.status %> de validation de <%= booking.offer.user.first_name %></strong></p>
-          <p>Lorsque <%= booking.offer.user.first_name %> aura validé l'offre,vous pourrez procéder au paiement.</p>
+      <% else %>
+        <p class="color-status-blue"><strong> <%= booking.status %> de validation de <%= booking.offer.user.first_name %></strong></p>
+        <p>Lorsque <%= booking.offer.user.first_name %> aura validé l'offre,vous pourrez procéder au paiement.</p>
         <%= link_to  "Payer", "/", class: "btn btn-green disabled tooltips", title: 'Coucou', data: { toggle: 'tooltip', placement: 'top', original_title: 'Facebook' } %>
       <% end %>
     </div>
