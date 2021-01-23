@@ -4,11 +4,14 @@
   background-color: transparent;
   transition: 0.5s background-color ease;
   align-items: center;
+  height: 66px;
+  width: 100%;
 }
 
 .navbar-lewagon-white {
   justify-content: space-between;
   background-color: white;
+  height: 66px;
 }
 
 .navbar-lewagon .navbar-collapse {
