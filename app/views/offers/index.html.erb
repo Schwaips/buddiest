@@ -33,9 +33,9 @@
               <%= link_to offer_path(offer) do %>
                 <div class="cards">
                   <% if offer.photo.attached? %>
-                    <%= cl_image_tag offer.photo.key, class: "card-img-top" %>
+                    <%= cl_image_tag offer.photo.key, class: "card-img" %>
                   <% else %>
-                    <img class="card-img-top" src="https://source.unsplash.com/random/300x200" alt="">
+                    <img class="card-img" src="https://source.unsplash.com/random/300x200" alt="">
                   <% end %>
                   <div class="card-description d-flex flex-column justify-content-between ">
                     <h4><%= offer.title  %></h4>
