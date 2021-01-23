@@ -7,11 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-Booking.destroy_all
-Offer.destroy_all
-User.destroy_all
+puts "--Destroy current data--"
+  Booking.destroy_all
+  Offer.destroy_all
+  User.destroy_all
+puts "--End of destroying current data--"
 
-puts "---creating users"
+puts "---Creating users"
 
   raph = User.new(email: "raphael.mosca@gmail.com", password: "123456", first_name: "Raphael", last_name: "Mosca", address:"rue batman 40000 angers", nationality: "French")
   raph.save!
@@ -28,7 +30,7 @@ puts "---creating users"
   charlie = User.new(email: "charlie.bertrand@live.com", password:"123456", first_name: "Charlie", last_name: "Bertrand", address: "79 boulevard Vincent Auriol 75013 Paris", nationality: "French")
   charlie.save!
 
-puts "end of user creation"
+puts "End of user creation"
 
 
 puts "---starting seeding offers---"
@@ -57,15 +59,37 @@ puts "---starting seeding offers---"
   offer6.save!
   puts "Creating offer 6"
 
+  offer7 = Offer.new(user: amelien, address: "14 rue de Amiral Mouchez 75014 Paris", area: "10", price_per_hour: 10, title: "Je vous rends visite et vous fait rigoler", description: "Je suis un humoriste à la base. J'ai travaillé avec des grands nom comme Dieud...Elie Semoune et plein d'autres!", photos: "https://source.unsplash.com/1600x900/?humor,%20laught" )
+  offer7.save!
+  puts "Creating offer 7"
+
+  offer8 = Offer.new(user: raph, address: "16 place du General de Gaulle Montreuil", area: "20", price_per_hour: 10, title: "Hello hello, par ici !", description: "Si vous souhaitez passer une bonne journée, n'hésitez pas à me demander! Je suis impatient de vous rencontrer", photos: "https://source.unsplash.com/1600x900/?smile,smile" )
+  offer8.save!
+  puts "Creating offer 8"
+
+
 puts "---end of seeding offers"
 
 
 puts "-- creating bookings"
 
+puts "--booking for Olivia---"
+Booking.create(user: raph, offer: offer2, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: charlie, offer: offer2, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
 
-Booking.create(user: raph, offer: offer2, date_begin: Time.current, date_end: Time.current + 1.hour)
-Booking.create(user: olivia, offer: offer1, date_begin: Time.current, date_end: Time.current + 1.hour)
-Booking.create(user: charlie, offer: offer1, date_begin: Time.current, date_end: Time.current + 1.hour)
+puts "--booking for raph"
+Booking.create(user: olivia, offer: offer1, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: charlie, offer: offer1, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+
+puts "--booking for charlie--"
+Booking.create(user: raph, offer: offer6, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: olivia, offer: offer6, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: amelien, offer: offer5, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+
+puts "--booking for amelien--"
+Booking.create(user: olivia, offer: offer3, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: charlie, offer: offer7, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
+Booking.create(user: raph, offer: offer3, date_begin: Time.current, date_end: Time.current + 1.hour, status: "En attente")
 
 puts "---end seeding---"
 

@@ -25,7 +25,7 @@
                 <%= f.input :area, label: "Zone de déplacement (en km)", placeholder: "50", input_html: { class: "offer-bar" } %>
                 <%= f.input :address, label: "Addresse de l'offre", placeholder: "12 Rue des gens heureux 49000 HappyCity", input_html: { class: "offer-bar" } %>
                 <%= f.input :price_per_hour, label: "Prix par heure", input_html: { class: "offer-bar" }, placeholder: "7" %>
-                <%= f.input :photo, as: :file, label: "Votre belle photo" %>
+                <%= f.input :photo, as: :file, label: "Votre belle photo", required: true %>
                 <%= f.submit "Créer votre offre !", class: "btn btn-green mt-4" %>
                 <% end %>
               </div> <!-- fin form simple form -->

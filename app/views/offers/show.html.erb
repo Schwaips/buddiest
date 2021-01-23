@@ -1,13 +1,8 @@
 
-<% if @offer.photo.attached? %>
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @offer.photo.attached? ? cl_image_path(@offer.photo.key, crop: :fit) : 'https://images.unsplash.com/photo-1490750967868-88aa4486c946' %>">
+
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @offer.photo.attached? ? cl_image_path(@offer.photo.key, crop: :fit) : @offer.photos %>">
    <h1><%= @offer.title.upcase %></h1>
 </div>
-<% else %>
-  <div class="card-category" style=" background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490750967868-88aa4486c946')">
-  <h1><%= @offer.title.upcase %></h1>
-  </div>
-<% end %>
 
 <div class="container">
 
@@ -35,8 +30,15 @@
     <div>
       <div class="offer-card">
         <h2><%= @offer.title %></h2>
-        <p id="offer-price"> <i class="fas fa-euro-sign"></i> <%= @offer.price_per_hour %>€/h</p>
+        <p id="offer-price"> <i class="fas fa-euro-sign"></i> <%= @offer.price_per_hour %>/h</p>
         <p class="mt-5"><%= @offer.description %></p>
+
+        <br>
+        <i class="fas fa-map-marked"></i> <%= @offer.address %> <p> </p>
+        <i class="fas fa-location-arrow"></i> <span>J'accepte de me déplacer à <%= @offer.area %> km</span>
+        <br>
+        <br>
+        <%= link_to  "Retour à la liste des offres", offers_path, class:"btn btn-primary" %>
       </div>
     </div>
 
