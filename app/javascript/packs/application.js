@@ -45,3 +45,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   // fetchWithToken();
 });
+
+import "controllers"
