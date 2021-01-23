@@ -105,7 +105,6 @@
         <div class="tab-pane" id="books-booked"><!--/Réservation de mes offres-->
               <%# <% if @bookings.count == 0 %>
               <br>
-
               <% if @bookings.empty? %>
                  <h4>Tiens, personne ne vous a réservé de compliments encore... essayez de faire de nouvelle proposition?</h4>
                 <%= link_to  "Proposer une nouvelle offre", new_offer_path, class: "btn btn-green" %>
