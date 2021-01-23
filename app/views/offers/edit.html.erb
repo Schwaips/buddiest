@@ -1,10 +1,29 @@
+<div class="pt-5 text-center">
+  <h2 class="pl-5">Modifiez votre offre</h2>
+  <%# <img class="d-block mx-auto mb-4" src="https://res.cloudinary.com/cb-dev/image/upload/v1610904406/buddiest/smile-icon.png" alt="" width="72" height="72"> %>
+</div>
 
 
-
-<h3>Editer l'offre</h3>
-  <%= simple_form_for(@offer) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :photos, label: "Photo Url" %>
-    <%= f.submit class: "btn- btn-primary", label: "Sauvegarder" %>
-  <% end %>
+ <div class="row no-gutter">
+      <!-- The image half -->
+    <div class="col-md-6 d-none d-md-flex">
+      <%= image_tag "offer.png", width: 900  %>
+    </div>
+      <!-- The content half -->
+    <div class="col-md-6">
+      <div class="login d-flex align-items-center">
+      <!-- Demo content-->
+          <div class="row">
+            <div class="col-lg-11 col-xl-10">
+              <%= simple_form_for(@offer) do |f| %>
+                <%= f.input :title, input_html: { class: "offer-bar" } %>
+                <%= f.input :description, label: "Description", as: :text, input_html: { class: "offer-bar" } %>
+                <%= f.input :photo, as: :file, label: "Votre belle photo" %>
+                <%= f.submit "Sauvegarder", class: "btn btn-green mt-4" %>
+              <% end %>
+              </div> <!-- fin form simple form -->
+            </div> <!-- fin col lg 10 col xl 7 -->
+        </div><!-- fin container -->
+      </div> <!-- fin div login -->
+    </div><!-- fin col md 6 bg light -->
+<!-- fin container fluid -->
