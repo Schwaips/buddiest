@@ -41,13 +41,17 @@
     </div>
 
     <div>
-      <div class="form-group form-wrapper booking-card">
+      <div class="form-group form-wrapper booking-card" data-controller>
         <h5 class="mb-4"><strong>Vous êtes interessé ?</strong></h5>
         <h6>Reservez dès maintenant</h6>
         <%= simple_form_for [@offer, @booking] do |f| %>
           <%= f.input :date_begin, as: :string, label: "Date de début", input_html: {class: "datepicker"}  %>
           <%= f.input :date_end, as: :string, label: "Date de fin", input_html: {class: "datepicker"} %>
+          <br>
+          <%= @booking.total_price %>
           <%= f.submit "Réserver ce cours", class: "btn btn-success btn-block" %>
+          <br>
+
         <% end %>
 
       </div>
